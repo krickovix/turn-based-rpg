@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 const MAP_PATH = "res://map/map.tscn"
 const RUN_CONFIG_REQ_URL = "http://127.0.0.1:8000/run/new"

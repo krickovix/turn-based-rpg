@@ -2,23 +2,45 @@
 
 [ext_resource type="Script" uid="uid://co7olt3bt0523" path="res://main_menu/main_menu.gd" id="1_oa53l"]
 
-[node name="MainMenu" type="Node2D"]
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_oa53l")
 
 [node name="Label" type="Label" parent="."]
-offset_left = 536.0
-offset_top = 304.0
-offset_right = 624.0
-offset_bottom = 327.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -44.0
+offset_top = -11.5
+offset_right = 44.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
 text = "Main Menu"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="StartButton" type="Button" parent="."]
-offset_left = 536.0
-offset_top = 360.0
-offset_right = 617.0
-offset_bottom = 391.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.5
+offset_top = 26.0
+offset_right = 40.5
+offset_bottom = 57.0
+grow_horizontal = 2
+grow_vertical = 2
 text = "Start Run"
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
