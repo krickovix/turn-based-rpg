@@ -1,0 +1,15 @@
+server/venv/
+server/__pycache__/
+server/**/__pycache__/
+server/*.pyc
+server/.pytest_cache/
+server/.env
+
+client/.godot/
+client/.import/
+client/export.cfg
+client/export_presets.cfg
+client/*.translation
+
+.vscode/
+.idea/
