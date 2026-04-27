@@ -1,0 +1,237 @@
+{
+  "slash": {
+    "id": "slash",
+    "name": "Slash",
+    "type": "physical",
+    "effect": "damage",
+    "base_value": 20,
+    "target": "enemy",
+    "description": "A clean strike. Scales with Attack, reduced by enemy Defense."
+  },
+  "shield_up": {
+    "id": "shield_up",
+    "name": "Shield Up",
+    "type": "status",
+    "effect": "buff_defense",
+    "base_value": 5,
+    "duration": 2,
+    "target": "self",
+    "description": "Raise your Defense for 2 turns."
+  },
+  "battle_cry": {
+    "id": "battle_cry",
+    "name": "Battle Cry",
+    "type": "status",
+    "effect": "buff_attack",
+    "base_value": 5,
+    "duration": 2,
+    "target": "self",
+    "description": "Raise your Attack for 2 turns."
+  },
+  "second_wind": {
+    "id": "second_wind",
+    "name": "Second Wind",
+    "type": "magic",
+    "effect": "heal",
+    "base_value": 25,
+    "target": "self",
+    "description": "Restore HP. Scales with Magic."
+  },
+
+  "rusty_blade": {
+    "id": "rusty_blade",
+    "name": "Rusty Blade",
+    "type": "physical",
+    "effect": "damage",
+    "base_value": 18,
+    "target": "enemy",
+    "description": "A crude swing with a dull blade. Moderate damage."
+  },
+  "dirty_kick": {
+    "id": "dirty_kick",
+    "name": "Dirty Kick",
+    "type": "physical",
+    "effect": "damage_and_debuff_defense",
+    "base_value": 10,
+    "duration": 2,
+    "target": "enemy",
+    "description": "A cheap shot. Light damage, lowers target's Defense for 2 turns."
+  },
+  "frenzy": {
+    "id": "frenzy",
+    "name": "Frenzy",
+    "type": "status",
+    "effect": "buff_attack",
+    "base_value": 5,
+    "duration": 2,
+    "target": "self",
+    "description": "Whip into a fury. Raises your Attack for 2 turns."
+  },
+  "headbutt": {
+    "id": "headbutt",
+    "name": "Headbutt",
+    "type": "physical",
+    "effect": "damage",
+    "base_value": 28,
+    "target": "enemy",
+    "description": "A reckless skull-first charge. Heavy damage."
+  },
+
+  "bite": {
+    "id": "bite",
+    "name": "Bite",
+    "type": "physical",
+    "effect": "damage",
+    "base_value": 20,
+    "target": "enemy",
+    "description": "Sink fangs into the target. Moderate damage."
+  },
+  "web_throw": {
+    "id": "web_throw",
+    "name": "Web Throw",
+    "type": "physical",
+    "effect": "damage_and_debuff_defense",
+    "base_value": 10,
+    "duration": 2,
+    "target": "enemy",
+    "description": "Sticky strands tangle the target. Light damage, lowers Defense for 2 turns."
+  },
+  "pounce": {
+    "id": "pounce",
+    "name": "Pounce",
+    "type": "physical",
+    "effect": "damage",
+    "base_value": 30,
+    "target": "enemy",
+    "description": "Leap and strike with full weight. Heavy damage."
+  },
+  "skitter": {
+    "id": "skitter",
+    "name": "Skitter",
+    "type": "status",
+    "effect": "buff_defense",
+    "base_value": 5,
+    "duration": 2,
+    "target": "self",
+    "description": "Dart around defensively. Raises your Defense for 2 turns."
+  },
+
+  "firebolt": {
+    "id": "firebolt",
+    "name": "Firebolt",
+    "type": "magic",
+    "effect": "damage",
+    "base_value": 18,
+    "target": "enemy",
+    "description": "Hurl a bolt of flame. Moderate damage. Scales with Magic, ignores Defense."
+  },
+  "arcane_surge": {
+    "id": "arcane_surge",
+    "name": "Arcane Surge",
+    "type": "status",
+    "effect": "buff_magic",
+    "base_value": 5,
+    "duration": 2,
+    "target": "self",
+    "description": "Channel raw arcane power. Raises your Magic for 2 turns."
+  },
+  "mana_drain": {
+    "id": "mana_drain",
+    "name": "Mana Drain",
+    "type": "magic",
+    "effect": "damage_and_debuff_magic",
+    "base_value": 10,
+    "duration": 2,
+    "target": "enemy",
+    "description": "Siphon arcane energy. Light damage, lowers target's Magic for 2 turns."
+  },
+  "hex_shield": {
+    "id": "hex_shield",
+    "name": "Hex Shield",
+    "type": "status",
+    "effect": "buff_defense",
+    "base_value": 5,
+    "duration": 2,
+    "target": "self",
+    "description": "A shimmering ward forms. Raises your Defense for 2 turns."
+  },
+
+  "shadow_bolt": {
+    "id": "shadow_bolt",
+    "name": "Shadow Bolt",
+    "type": "magic",
+    "effect": "damage",
+    "base_value": 28,
+    "target": "enemy",
+    "description": "Hurl a bolt of pure shadow. Heavy damage. Scales with Magic, ignores Defense."
+  },
+  "drain_life": {
+    "id": "drain_life",
+    "name": "Drain Life",
+    "type": "magic",
+    "effect": "damage_and_heal",
+    "base_value": 12,
+    "target": "enemy",
+    "description": "Pull life force from the target. Light damage, heals you for the same amount."
+  },
+  "curse": {
+    "id": "curse",
+    "name": "Curse",
+    "type": "status",
+    "effect": "debuff_attack",
+    "base_value": 5,
+    "duration": 2,
+    "target": "enemy",
+    "description": "Whisper a hex. Lowers target's Attack for 2 turns."
+  },
+  "dark_pact": {
+    "id": "dark_pact",
+    "name": "Dark Pact",
+    "type": "status",
+    "effect": "buff_magic_self_damage",
+    "base_value": 5,
+    "duration": 2,
+    "cost_hp": 10,
+    "target": "self",
+    "description": "Sacrifice HP for power. Raises your Magic for 2 turns at the cost of 10 HP."
+  },
+
+  "flame_breath": {
+    "id": "flame_breath",
+    "name": "Flame Breath",
+    "type": "magic",
+    "effect": "damage",
+    "base_value": 28,
+    "target": "enemy",
+    "description": "Exhale a torrent of fire. Heavy damage. Scales with Magic, ignores Defense."
+  },
+  "claw_swipe": {
+    "id": "claw_swipe",
+    "name": "Claw Swipe",
+    "type": "physical",
+    "effect": "damage",
+    "base_value": 20,
+    "target": "enemy",
+    "description": "Rake with massive claws. Moderate damage."
+  },
+  "intimidate": {
+    "id": "intimidate",
+    "name": "Intimidate",
+    "type": "status",
+    "effect": "debuff_attack",
+    "base_value": 5,
+    "duration": 2,
+    "target": "enemy",
+    "description": "A terrifying roar. Lowers target's Attack for 2 turns."
+  },
+  "dragon_scales": {
+    "id": "dragon_scales",
+    "name": "Dragon Scales",
+    "type": "status",
+    "effect": "buff_defense",
+    "base_value": 5,
+    "duration": 2,
+    "target": "self",
+    "description": "Scales harden into armor. Raises your Defense for 2 turns."
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "id": "knight",
+  "name": "Knight",
+  "level": 1,
+  "xp": 0,
+  "xp_to_next_level": 100,
+  "base_stats": {
+    "health": 100,
+    "attack": 15,
+    "defense": 10,
+    "magic": 8
+  },
+  "default_moves": ["slash", "shield_up", "battle_cry", "second_wind"]
+}

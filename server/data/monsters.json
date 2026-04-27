@@ -1,0 +1,57 @@
+[
+  {
+    "monster_id": "goblin_warrior",
+    "name": "Goblin Warrior",
+    "stats": {
+      "health": 60,
+      "attack": 12,
+      "defense": 6,
+      "magic": 0
+    },
+    "moves": ["rusty_blade", "dirty_kick", "frenzy", "headbutt"]
+  },
+  {
+    "monster_id": "goblin_mage",
+    "name": "Goblin Mage",
+    "stats": {
+      "health": 70,
+      "attack": 6,
+      "defense": 7,
+      "magic": 16
+    },
+    "moves": ["firebolt", "arcane_surge", "mana_drain", "hex_shield"]
+  },
+  {
+    "monster_id": "giant_spider",
+    "name": "Giant Spider",
+    "stats": {
+      "health": 75,
+      "attack": 14,
+      "defense": 8,
+      "magic": 0
+    },
+    "moves": ["bite", "web_throw", "pounce", "skitter"]
+  },
+  {
+    "monster_id": "witch",
+    "name": "Witch",
+    "stats": {
+      "health": 90,
+      "attack": 5,
+      "defense": 8,
+      "magic": 20
+    },
+    "moves": ["shadow_bolt", "drain_life", "curse", "dark_pact"]
+  },
+  {
+    "monster_id": "dragon",
+    "name": "Dragon",
+    "stats": {
+      "health": 140,
+      "attack": 18,
+      "defense": 14,
+      "magic": 18
+    },
+    "moves": ["flame_breath", "claw_swipe", "intimidate", "dragon_scales"]
+  }
+]
