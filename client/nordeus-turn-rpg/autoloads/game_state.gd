@@ -1,10 +1,9 @@
 extends Node
 
 var run_config: Dictionary = {}
-
 var run_active: bool = false
-
 var level: int = 0
+var current_encounter: Dictionary = {}
 
 
 func start_new_run(config: Dictionary) -> void:
