@@ -17,8 +17,9 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-GameState="*res://autoloads/game_state.gd"
+RunState="*res://autoloads/run_state.gd"
 APIClient="*res://autoloads/api_client.gd"
+DictParser="*res://autoloads/dict_parser.gd"
 
 [rendering]
 
