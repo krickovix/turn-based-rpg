@@ -33,9 +33,7 @@ def next_move(
     monster_max_hp: int,
     hero_hp: int,
     hero_max_hp: int,
-    turn_number: int,
-    monster_effects: List[str] = Query(default=[]),
-    hero_effects: List[str] = Query(default=[]),
+    turn_number: int
 ):
     monsters = load_data()["monsters"]
     
