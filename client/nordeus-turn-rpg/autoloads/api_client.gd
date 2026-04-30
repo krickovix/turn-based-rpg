@@ -1,14 +1,27 @@
 extends Node
 
 const SERVER_URL = "http://127.0.0.1:8000"
+const GET_RUN_CONFIG_URL = "/run/new"
+const GET_NEXT_MOVE_URL = "/battle/next-move"
 
 signal request_failed(reason: String)
 
-func get_run_config() -> Variant:
-	return await send_get("/run/new", {})
+func get_run_config() -> void:
+	var response = await send_get(GET_RUN_CONFIG_URL, {})
+	DictParser.parse_run_config(response)
 
-func get_monster_move(params: Dictionary) -> Variant:
-	return await send_get("/battle/next-move", params)
+func get_monster_move(monster_str_id: String, monster_hp: int, monster_max_hp: int, 
+						hero_hp: int, hero_max_hp: int, turn: int) -> Move:
+						
+	var params = DictParser.create_monster_move_params(monster_str_id, monster_hp, monster_max_hp,
+														hero_hp, hero_max_hp, turn)
+	var response = await send_get(GET_NEXT_MOVE_URL, params)
+	if response == null:
+		print("NO MONSTER RESPONSE")
+		return null
+	
+	return DictParser.parse_next_monster_move(response)
+
 
 func send_get(path: String, params: Dictionary) -> Variant:
 	var query = build_query(params)
