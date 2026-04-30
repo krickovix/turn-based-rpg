@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=3 uid="uid://cgmsrsyyxne85"]
+
+[ext_resource type="Script" uid="uid://byaq2kpsefchu" path="res://fighter/fighter_ui.gd" id="1_f658i"]
+
+[node name="FighterUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+script = ExtResource("1_f658i")
+
+[node name="StatsContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 335.0
+offset_bottom = 112.0
+
+[node name="NameLabel" type="Label" parent="StatsContainer"]
+layout_mode = 2
+text = "Hero"
+vertical_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="StatsContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="HPLabel" type="Label" parent="StatsContainer"]
+layout_mode = 2
+text = "0/100"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="StatsContainer"]
+layout_mode = 2
