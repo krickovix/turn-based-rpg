@@ -63,8 +63,50 @@ text = "Start Battle"
 layout_mode = 2
 text = "Start Battle"
 
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -65.0
+offset_top = 76.0
+offset_right = 65.0
+offset_bottom = 107.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Return to Menu"
+
+[node name="RunCompleteLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -56.0
+offset_top = -64.0
+offset_right = 56.0
+offset_bottom = -41.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Run complete!"
+
+[node name="ConfirmBackDialog" type="ConfirmationDialog" parent="."]
+oversampling_override = 1.0
+title = ""
+initial_position = 3
+size = Vector2i(528, 100)
+current_screen = 0
+ok_button_text = "Confirm"
+dialog_text = "Are you sure? If you go back to Menu now, all progres will be lost..."
+dialog_autowrap = true
+
 [connection signal="pressed" from="StartButtons/Button0" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="StartButtons/Button1" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="StartButtons/Button2" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="StartButtons/Button3" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="StartButtons/Button4" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="confirmed" from="ConfirmBackDialog" to="." method="_on_confirmation_dialog_confirmed"]
