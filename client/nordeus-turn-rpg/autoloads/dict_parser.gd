@@ -39,10 +39,7 @@ static func parse_monster(monster_dict: Dictionary) -> Fighter:
 	
 	
 static func parse_move(move_dir: Dictionary) -> Move:
-	var move := Move.new()
-	move.string_id = move_dir["id"]
-	move.name = move_dir["name"]
-	move.description = move_dir["description"]
+	var move := Move.new(move_dir["id"], move_dir["name"], move_dir["description"])
 	move.effects = []
 	for effect_dir in move_dir["effects"]:
 		move.effects.append(parse_effect(effect_dir))
