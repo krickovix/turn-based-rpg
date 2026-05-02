@@ -21,6 +21,11 @@ RunState="*res://autoloads/run_state.gd"
 APIClient="*res://autoloads/api_client.gd"
 DictParser="*res://autoloads/dict_parser.gd"
 
+[gui]
+
+theme/custom_font="uid://b5bmb1hxy8yhi"
+
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"
