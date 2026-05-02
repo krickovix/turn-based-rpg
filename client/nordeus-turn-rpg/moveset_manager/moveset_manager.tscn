@@ -1,9 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://bd75djkar54qb"]
+[gd_scene load_steps=5 format=3 uid="uid://bd75djkar54qb"]
 
 [ext_resource type="Script" uid="uid://cpa3lmai6kj73" path="res://moveset_manager/moveset_manager.gd" id="1_7os1y"]
 [ext_resource type="PackedScene" uid="uid://dlelbkm8bqmh" path="res://moveset_manager/move_slot/move_slot.tscn" id="2_teuqa"]
+[ext_resource type="Texture2D" uid="uid://bwkqanl75j10d" path="res://assets/borders/corner-1.png" id="2_wjlew"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g567r"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ccn5v"]
 
 [node name="MovesetManager" type="Control"]
 layout_mode = 3
@@ -14,17 +15,55 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_7os1y")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="OrnamentContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/margin_left = 50
 theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
 
-[node name="BackButton" type="Button" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="OrnamentContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 28
-text = "<-"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="OrnamentContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="OrnamentContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+texture = ExtResource("2_wjlew")
+stretch_mode = 2
+flip_h = true
+
+[node name="TextureRect2" type="TextureRect" parent="OrnamentContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+texture = ExtResource("2_wjlew")
+stretch_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="OrnamentContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+
+[node name="TextureRect" type="TextureRect" parent="OrnamentContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 2
+texture = ExtResource("2_wjlew")
+stretch_mode = 2
+flip_h = true
+flip_v = true
+
+[node name="TextureRect2" type="TextureRect" parent="OrnamentContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 10
+texture = ExtResource("2_wjlew")
+stretch_mode = 2
+flip_v = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -39,30 +78,42 @@ offset_right = 46.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 15
+theme_override_constants/separation = 40
+
+[node name="BackButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 2
+theme_override_font_sizes/font_size = 24
+text = "Back to Map"
 
 [node name="AvailableMovesLabel" type="Label" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 28
 text = "Available moves"
 horizontal_alignment = 1
 
 [node name="AvailableSlotsContainer" type="GridContainer" parent="VBoxContainer"]
 layout_mode = 2
-columns = 5
+size_flags_horizontal = 4
+theme_override_constants/h_separation = 12
+theme_override_constants/v_separation = 12
+columns = 6
 
 [node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 30
-theme_override_styles/separator = SubResource("StyleBoxEmpty_g567r")
+theme_override_styles/separator = SubResource("StyleBoxEmpty_ccn5v")
 
 [node name="EquippedMovesLabel" type="Label" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 28
 text = "Equipped moves"
 horizontal_alignment = 1
 
 [node name="EquippedSlotsContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_constants/separation = 12
 
 [node name="MoveSlot" parent="VBoxContainer/EquippedSlotsContainer" instance=ExtResource("2_teuqa")]
 layout_mode = 2
@@ -76,4 +127,4 @@ layout_mode = 2
 [node name="MoveSlot4" parent="VBoxContainer/EquippedSlotsContainer" instance=ExtResource("2_teuqa")]
 layout_mode = 2
 
-[connection signal="pressed" from="MarginContainer/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]

@@ -12,11 +12,16 @@ func set_move(move: Move) -> void:
 	_remove_card()
 	
 	var card: MoveCard = MOVE_CARD.instantiate()
-	card.set_move(move)
 	add_child(card)
+	card.set_move(move)
 	
 	RunState.hero.swap_equipped(slot_index, move.id)
 
+func remove_modulate():
+	for child in get_children():
+			if child is MoveCard:
+				child.icon_container.modulate = Color.WHITE
+				
 func _remove_card():
 	for child in get_children():
 		if child is MoveCard:

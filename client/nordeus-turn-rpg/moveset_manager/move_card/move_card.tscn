@@ -1,13 +1,57 @@
-[gd_scene load_steps=2 format=3 uid="uid://yuvr8u8fwvs5"]
+[gd_scene load_steps=4 format=3 uid="uid://yuvr8u8fwvs5"]
 
 [ext_resource type="Script" uid="uid://bs34fi11c6f32" path="res://moveset_manager/move_card/move_card.gd" id="1_4ge3h"]
+[ext_resource type="Texture2D" uid="uid://3doh2y0tqngl" path="res://assets/move_card_background/move_card_background_dark.png" id="2_qj315"]
+[ext_resource type="Texture2D" uid="uid://bdgduca8ujjtp" path="res://assets/sprites/moves/32x32/arcane_surge.png" id="2_ypmei"]
 
-[node name="MoveCard" type="Button"]
+[node name="MoveCard" type="VBoxContainer"]
 custom_minimum_size = Vector2(100, 100)
-offset_right = 8.0
-offset_bottom = 8.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -180.5
+offset_top = -216.5
+offset_right = 180.5
+offset_bottom = 216.5
+grow_horizontal = 2
+grow_vertical = 2
 tooltip_text = "Move Description"
-text = "Move Icon"
 script = ExtResource("1_4ge3h")
 
-[connection signal="pressed" from="." to="." method="_on_pressed"]
+[node name="IconContainer" type="CenterContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="IconTexture" type="TextureRect" parent="IconContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+texture = ExtResource("2_qj315")
+expand_mode = 3
+
+[node name="IconButton" type="Button" parent="IconContainer"]
+z_index = 1
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+mouse_filter = 1
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 24
+icon = ExtResource("2_ypmei")
+flat = true
+icon_alignment = 1
+
+[node name="NameLabel" type="Label" parent="."]
+z_index = 1
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(1, 0, 1, 0)
+theme_override_constants/shadow_offset_y = 8
+theme_override_constants/shadow_outline_size = 10
+theme_override_font_sizes/font_size = 28
+text = "Move Name"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="IconContainer/IconButton" to="." method="_on_icon_button_pressed"]
