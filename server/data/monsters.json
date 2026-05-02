@@ -8,7 +8,8 @@
       "defense": 6,
       "magic": 0
     },
-    "moves": ["rusty_blade", "dirty_kick", "frenzy", "headbutt"]
+    "moves": ["rusty_blade", "dirty_kick", "frenzy", "headbutt"],
+    "xp_reward": 30
   },
   {
     "monster_id": "goblin_mage",
@@ -16,10 +17,11 @@
     "stats": {
       "health": 70,
       "attack": 6,
-      "defense": 7,
+      "defense": 16,
       "magic": 16
     },
-    "moves": ["firebolt", "arcane_surge", "mana_drain", "hex_shield"]
+    "moves": ["firebolt", "arcane_surge", "mana_drain", "hex_shield"],
+    "xp_reward": 50
   },
   {
     "monster_id": "giant_spider",
@@ -30,7 +32,8 @@
       "defense": 8,
       "magic": 0
     },
-    "moves": ["bite", "web_throw", "pounce", "skitter"]
+    "moves": ["bite", "web_throw", "pounce", "skitter"],
+    "xp_reward": 70
   },
   {
     "monster_id": "witch",
@@ -41,7 +44,8 @@
       "defense": 8,
       "magic": 20
     },
-    "moves": ["shadow_bolt", "drain_life", "curse", "dark_pact"]
+    "moves": ["shadow_bolt", "drain_life", "curse", "dark_pact"],
+    "xp_reward": 90
   },
   {
     "monster_id": "dragon",
@@ -52,6 +56,7 @@
       "defense": 14,
       "magic": 18
     },
-    "moves": ["flame_breath", "claw_swipe", "intimidate", "dragon_scales"]
+    "moves": ["flame_breath", "claw_swipe", "intimidate", "dragon_scales"],
+    "xp_reward": 110
   }
 ]

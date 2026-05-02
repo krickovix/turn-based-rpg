@@ -5,7 +5,7 @@
   "xp": 0,
   "xp_to_next_level": 100,
   "base_stats": {
-    "health": 100,
+    "health": 70,
     "attack": 15,
     "defense": 10,
     "magic": 8
