@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://dlelbkm8bqmh"]
+
+[ext_resource type="Script" uid="uid://c3cqmfqwhthb6" path="res://moveset_manager/move_slot/move_slot.gd" id="1_me0d4"]
+[ext_resource type="PackedScene" uid="uid://yuvr8u8fwvs5" path="res://moveset_manager/move_card/move_card.tscn" id="2_u1tir"]
+
+[sub_resource type="Gradient" id="Gradient_frwvm"]
+colors = PackedColorArray(0, 0, 0, 0.54901963, 1, 1, 1, 0.54901963)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_me0d4"]
+gradient = SubResource("Gradient_frwvm")
+width = 100
+height = 100
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0)
+
+[node name="MoveSlot" type="CenterContainer"]
+custom_minimum_size = Vector2(100, 100)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1052.0
+offset_bottom = -548.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_me0d4")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = -1
+layout_mode = 2
+texture = SubResource("GradientTexture2D_me0d4")
+
+[node name="MoveCard" parent="." instance=ExtResource("2_u1tir")]
+layout_mode = 2
+mouse_filter = 1
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="pressed" from="MoveCard" to="." method="_on_move_card_pressed"]

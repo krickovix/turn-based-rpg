@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://yuvr8u8fwvs5"]
+
+[ext_resource type="Script" uid="uid://bs34fi11c6f32" path="res://moveset_manager/move_card/move_card.gd" id="1_4ge3h"]
+
+[node name="MoveCard" type="Button"]
+custom_minimum_size = Vector2(100, 100)
+offset_right = 8.0
+offset_bottom = 8.0
+tooltip_text = "Move Description"
+text = "Move Icon"
+script = ExtResource("1_4ge3h")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

@@ -103,6 +103,20 @@ ok_button_text = "Confirm"
 dialog_text = "Are you sure? If you go back to Menu now, all progres will be lost..."
 dialog_autowrap = true
 
+[node name="MoveManagementButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -181.0
+offset_top = -15.5
+offset_bottom = 15.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "Moveset Management"
+
 [connection signal="pressed" from="StartButtons/Button0" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="StartButtons/Button1" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="StartButtons/Button2" to="." method="_on_button_pressed"]
@@ -110,3 +124,4 @@ dialog_autowrap = true
 [connection signal="pressed" from="StartButtons/Button4" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="confirmed" from="ConfirmBackDialog" to="." method="_on_confirmation_dialog_confirmed"]
+[connection signal="pressed" from="MoveManagementButton" to="." method="_on_move_management_button_pressed"]

@@ -2,6 +2,7 @@ extends Control
 
 const BATTLE_PATH = "res://battle/battle.tscn"
 const MENU_PATH = "res://main_menu/main_menu.tscn"
+const MOVESET_MANAGER_PATH = "res://battle/moveset_manager.tscn"
 
 @onready var start_battle_buttons : Array[Button] = [
 	$StartButtons/Button0, 
@@ -49,3 +50,7 @@ func _on_back_button_pressed() -> void:
 
 func _on_confirmation_dialog_confirmed() -> void:
 	get_tree().change_scene_to_file(MENU_PATH)
+	
+
+func _on_move_management_button_pressed() -> void:
+	get_tree().change_scene_to_file(MOVESET_MANAGER_PATH)
