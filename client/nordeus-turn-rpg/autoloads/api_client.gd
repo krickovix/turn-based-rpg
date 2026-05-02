@@ -15,7 +15,6 @@ func get_monster_move(monster_str_id: String, monster_hp: int, monster_max_hp: i
 						
 	var params = DictParser.create_monster_move_params(monster_str_id, monster_hp, monster_max_hp, monster_effects,
 														hero_hp, hero_max_hp, hero_effects, turn)
-	print(params)
 	var response = await send_get(GET_NEXT_MOVE_URL, params)
 	if response == null:
 		print("NO MONSTER RESPONSE")
