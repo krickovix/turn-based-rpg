@@ -2,236 +2,203 @@
   "slash": {
     "id": "slash",
     "name": "Slash",
-    "type": "physical",
-    "effect": "damage",
-    "base_value": 20,
-    "target": "enemy",
-    "description": "A clean strike. Scales with Attack, reduced by enemy Defense."
+    "description": "A clean strike. Scales with Attack, reduced by enemy Defense.",
+    "effects": [
+      { "type": "damage", "stat": "attack", "target": "enemy", "base_value": 20, "turns_remaining": 0 }
+    ]
   },
   "shield_up": {
     "id": "shield_up",
     "name": "Shield Up",
-    "type": "status",
-    "effect": "buff_defense",
-    "base_value": 5,
-    "duration": 2,
-    "target": "self",
-    "description": "Raise your Defense for 2 turns."
+    "description": "Raise your Defense for 2 turns.",
+    "effects": [
+      { "type": "buff", "stat": "defense", "target": "self", "base_value": 5, "turns_remaining": 2 }
+    ]
   },
   "battle_cry": {
     "id": "battle_cry",
     "name": "Battle Cry",
-    "type": "status",
-    "effect": "buff_attack",
-    "base_value": 5,
-    "duration": 2,
-    "target": "self",
-    "description": "Raise your Attack for 2 turns."
+    "description": "Raise your Attack for 2 turns.",
+    "effects": [
+      { "type": "buff", "stat": "attack", "target": "self", "base_value": 5, "turns_remaining": 2 }
+    ]
   },
   "second_wind": {
     "id": "second_wind",
     "name": "Second Wind",
-    "type": "magic",
-    "effect": "heal",
-    "base_value": 25,
-    "target": "self",
-    "description": "Restore HP. Scales with Magic."
+    "description": "Restore HP. Scales with Magic.",
+    "effects": [
+      { "type": "heal", "stat": "magic", "target": "self", "base_value": 25, "turns_remaining": 0 }
+    ]
   },
 
   "rusty_blade": {
     "id": "rusty_blade",
     "name": "Rusty Blade",
-    "type": "physical",
-    "effect": "damage",
-    "base_value": 18,
-    "target": "enemy",
-    "description": "A crude swing with a dull blade. Moderate damage."
+    "description": "A crude swing with a dull blade. Moderate damage.",
+    "effects": [
+      { "type": "damage", "stat": "attack", "target": "enemy", "base_value": 14, "turns_remaining": 0 }
+    ]
   },
   "dirty_kick": {
     "id": "dirty_kick",
     "name": "Dirty Kick",
-    "type": "physical",
-    "effect": "damage_and_debuff_defense",
-    "base_value": 10,
-    "duration": 2,
-    "target": "enemy",
-    "description": "A cheap shot. Light damage, lowers target's Defense for 2 turns."
+    "description": "A cheap shot. Light damage, lowers target's Defense for 2 turns.",
+    "effects": [
+      { "type": "damage", "stat": "attack",  "target": "enemy", "base_value": 10, "turns_remaining": 0 },
+      { "type": "debuff", "stat": "defense", "target": "enemy", "base_value": 3,  "turns_remaining": 2 }
+    ]
   },
   "frenzy": {
     "id": "frenzy",
     "name": "Frenzy",
-    "type": "status",
-    "effect": "buff_attack",
-    "base_value": 5,
-    "duration": 2,
-    "target": "self",
-    "description": "Whip into a fury. Raises your Attack for 2 turns."
+    "description": "Whip into a fury. Raises your Attack for 2 turns.",
+    "effects": [
+      { "type": "buff", "stat": "attack", "target": "self", "base_value": 5, "turns_remaining": 2 }
+    ]
   },
   "headbutt": {
     "id": "headbutt",
     "name": "Headbutt",
-    "type": "physical",
-    "effect": "damage",
-    "base_value": 28,
-    "target": "enemy",
-    "description": "A reckless skull-first charge. Heavy damage."
+    "description": "A reckless skull-first charge. Heavy damage.",
+    "effects": [
+      { "type": "damage", "stat": "attack", "target": "enemy", "base_value": 18, "turns_remaining": 0 }
+    ]
   },
 
   "bite": {
     "id": "bite",
     "name": "Bite",
-    "type": "physical",
-    "effect": "damage",
-    "base_value": 20,
-    "target": "enemy",
-    "description": "Sink fangs into the target. Moderate damage."
+    "description": "Sink fangs into the target. Moderate damage.",
+    "effects": [
+      { "type": "damage", "stat": "attack", "target": "enemy", "base_value": 30, "turns_remaining": 0 }
+    ]
   },
   "web_throw": {
     "id": "web_throw",
     "name": "Web Throw",
-    "type": "physical",
-    "effect": "damage_and_debuff_defense",
-    "base_value": 10,
-    "duration": 2,
-    "target": "enemy",
-    "description": "Sticky strands tangle the target. Light damage, lowers Defense for 2 turns."
+    "description": "Sticky strands tangle the target. Light damage, lowers Defense for 2 turns.",
+    "effects": [
+      { "type": "damage", "stat": "attack",  "target": "enemy", "base_value": 20, "turns_remaining": 0 },
+      { "type": "debuff", "stat": "defense", "target": "enemy", "base_value": 10,  "turns_remaining": 2 }
+    ]
   },
   "pounce": {
     "id": "pounce",
     "name": "Pounce",
-    "type": "physical",
-    "effect": "damage",
-    "base_value": 30,
-    "target": "enemy",
-    "description": "Leap and strike with full weight. Heavy damage."
+    "description": "Leap and strike with full weight. Heavy damage.",
+    "effects": [
+      { "type": "damage", "stat": "attack", "target": "enemy", "base_value": 50, "turns_remaining": 0 }
+    ]
   },
   "skitter": {
     "id": "skitter",
     "name": "Skitter",
-    "type": "status",
-    "effect": "buff_defense",
-    "base_value": 5,
-    "duration": 2,
-    "target": "self",
-    "description": "Dart around defensively. Raises your Defense for 2 turns."
+    "description": "Dart around defensively. Raises your Defense for 2 turns.",
+    "effects": [
+      { "type": "buff", "stat": "defense", "target": "self", "base_value": 15, "turns_remaining": 2 }
+    ]
   },
 
   "firebolt": {
     "id": "firebolt",
     "name": "Firebolt",
-    "type": "magic",
-    "effect": "damage",
-    "base_value": 18,
-    "target": "enemy",
-    "description": "Hurl a bolt of flame. Moderate damage. Scales with Magic, ignores Defense."
+    "description": "Hurl a bolt of flame. Moderate damage. Scales with Magic, ignores Defense.",
+    "effects": [
+      { "type": "damage", "stat": "magic", "target": "enemy", "base_value": 24, "turns_remaining": 0 }
+    ]
   },
   "arcane_surge": {
     "id": "arcane_surge",
     "name": "Arcane Surge",
-    "type": "status",
-    "effect": "buff_magic",
-    "base_value": 5,
-    "duration": 2,
-    "target": "self",
-    "description": "Channel raw arcane power. Raises your Magic for 2 turns."
+    "description": "Channel raw arcane power. Raises your Magic for 2 turns.",
+    "effects": [
+      { "type": "buff", "stat": "magic", "target": "self", "base_value": 18, "turns_remaining": 2 }
+    ]
   },
   "mana_drain": {
     "id": "mana_drain",
     "name": "Mana Drain",
-    "type": "magic",
-    "effect": "damage_and_debuff_magic",
-    "base_value": 10,
-    "duration": 2,
-    "target": "enemy",
-    "description": "Siphon arcane energy. Light damage, lowers target's Magic for 2 turns."
+    "description": "Siphon arcane energy. Light damage, lowers target's Magic for 2 turns.",
+    "effects": [
+      { "type": "damage", "stat": "magic", "target": "enemy", "base_value": 10, "turns_remaining": 0 },
+      { "type": "debuff", "stat": "magic", "target": "enemy", "base_value": 10,  "turns_remaining": 2 }
+    ]
   },
   "hex_shield": {
     "id": "hex_shield",
     "name": "Hex Shield",
-    "type": "status",
-    "effect": "buff_defense",
-    "base_value": 5,
-    "duration": 2,
-    "target": "self",
-    "description": "A shimmering ward forms. Raises your Defense for 2 turns."
+    "description": "A shimmering ward forms. Raises your Defense for 2 turns.",
+    "effects": [
+      { "type": "buff", "stat": "defense", "target": "self", "base_value": 15, "turns_remaining": 2 }
+    ]
   },
 
   "shadow_bolt": {
     "id": "shadow_bolt",
     "name": "Shadow Bolt",
-    "type": "magic",
-    "effect": "damage",
-    "base_value": 28,
-    "target": "enemy",
-    "description": "Hurl a bolt of pure shadow. Heavy damage. Scales with Magic, ignores Defense."
+    "description": "Hurl a bolt of pure shadow. Heavy damage. Scales with Magic, ignores Defense.",
+    "effects": [
+      { "type": "damage", "stat": "magic", "target": "enemy", "base_value": 30, "turns_remaining": 0 }
+    ]
   },
   "drain_life": {
     "id": "drain_life",
     "name": "Drain Life",
-    "type": "magic",
-    "effect": "damage_and_heal",
-    "base_value": 12,
-    "target": "enemy",
-    "description": "Pull life force from the target. Light damage, heals you for the same amount."
+    "description": "Pull life force from the target. Light damage, heals you for the same amount.",
+    "effects": [
+      { "type": "damage", "stat": "magic", "target": "enemy", "base_value": 12, "turns_remaining": 0 },
+      { "type": "heal",   "stat": "magic", "target": "self",  "base_value": 12, "turns_remaining": 0 }
+    ]
   },
   "curse": {
     "id": "curse",
     "name": "Curse",
-    "type": "status",
-    "effect": "debuff_attack",
-    "base_value": 5,
-    "duration": 2,
-    "target": "enemy",
-    "description": "Whisper a hex. Lowers target's Attack for 2 turns."
+    "description": "Whisper a hex. Lowers target's Attack for 2 turns.",
+    "effects": [
+      { "type": "debuff", "stat": "attack", "target": "enemy", "base_value": 5, "turns_remaining": 2 }
+    ]
   },
   "dark_pact": {
     "id": "dark_pact",
     "name": "Dark Pact",
-    "type": "status",
-    "effect": "buff_magic_self_damage",
-    "base_value": 5,
-    "duration": 2,
-    "cost_hp": 10,
-    "target": "self",
-    "description": "Sacrifice HP for power. Raises your Magic for 2 turns at the cost of 10 HP."
+    "description": "Sacrifice HP for power. Raises your Magic for 2 turns at the cost of 10 HP.",
+    "effects": [
+      { "type": "damage", "stat": "none",  "target": "self", "base_value": 10, "turns_remaining": 0 },
+      { "type": "buff",   "stat": "magic", "target": "self", "base_value": 5,  "turns_remaining": 2 }
+    ]
   },
 
   "flame_breath": {
     "id": "flame_breath",
     "name": "Flame Breath",
-    "type": "magic",
-    "effect": "damage",
-    "base_value": 28,
-    "target": "enemy",
-    "description": "Exhale a torrent of fire. Heavy damage. Scales with Magic, ignores Defense."
+    "description": "Exhale a torrent of fire. Heavy damage. Scales with Magic, ignores Defense.",
+    "effects": [
+      { "type": "damage", "stat": "magic", "target": "enemy", "base_value": 28, "turns_remaining": 0 }
+    ]
   },
   "claw_swipe": {
     "id": "claw_swipe",
     "name": "Claw Swipe",
-    "type": "physical",
-    "effect": "damage",
-    "base_value": 20,
-    "target": "enemy",
-    "description": "Rake with massive claws. Moderate damage."
+    "description": "Rake with massive claws. Moderate damage.",
+    "effects": [
+      { "type": "damage", "stat": "attack", "target": "enemy", "base_value": 20, "turns_remaining": 0 }
+    ]
   },
   "intimidate": {
     "id": "intimidate",
     "name": "Intimidate",
-    "type": "status",
-    "effect": "debuff_attack",
-    "base_value": 5,
-    "duration": 2,
-    "target": "enemy",
-    "description": "A terrifying roar. Lowers target's Attack for 2 turns."
+    "description": "A terrifying roar. Lowers target's Attack for 2 turns.",
+    "effects": [
+      { "type": "debuff", "stat": "attack", "target": "enemy", "base_value": 5, "turns_remaining": 2 }
+    ]
   },
   "dragon_scales": {
     "id": "dragon_scales",
     "name": "Dragon Scales",
-    "type": "status",
-    "effect": "buff_defense",
-    "base_value": 5,
-    "duration": 2,
-    "target": "self",
-    "description": "Scales harden into armor. Raises your Defense for 2 turns."
+    "description": "Scales harden into armor. Raises your Defense for 2 turns.",
+    "effects": [
+      { "type": "buff", "stat": "defense", "target": "self", "base_value": 5, "turns_remaining": 2 }
+    ]
   }
 }
