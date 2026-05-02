@@ -3,16 +3,13 @@ extends Control
 signal battle_over(xp_learned: int, levels_gained: int, move_learned: Move)
 
 enum FighterType{HERO, MONSTER}
-const MOVE_STR = ["Your move!", "Monster's move!"]
-const MONSTER_THINKING_STR = "Monster is thinking..."
 
-@onready var move_label: Label = $MoveUI/MoveLabel
-@onready var move_buttons_container: HBoxContainer = $MoveUI/MoveButtons
-@onready var move_buttons : Array[Button] = [
-	$MoveUI/MoveButtons/Button, 
-	$MoveUI/MoveButtons/Button2, 
-	$MoveUI/MoveButtons/Button3, 
-	$MoveUI/MoveButtons/Button4
+@onready var move_card_container: HBoxContainer = $MarginContainer/MoveUI/MoveCardContainer
+@onready var move_cards : Array[MoveCard] = [
+	$MarginContainer/MoveUI/MoveCardContainer/MoveCard, 
+	$MarginContainer/MoveUI/MoveCardContainer/MoveCard2, 
+	$MarginContainer/MoveUI/MoveCardContainer/MoveCard3, 
+	$MarginContainer/MoveUI/MoveCardContainer/MoveCard4
 ]
 
 var turn: int = 0
@@ -38,10 +35,10 @@ func _ready() -> void:
 	battle_finished = false
 	set_up_ui()
 
-func _on_move_button_pressed(move_id: int) -> void:
+func _on_move_button_pressed(move: Move) -> void:
 	if current_player != FighterType.HERO:
 		return
-	handle_hero_move(RunState.moves[move_id])	
+	handle_hero_move(move)	
 		
 func handle_hero_move(move: Move) -> void:
 	resolve_move(hero, monster, move)
@@ -54,8 +51,6 @@ func handle_monster_move(move: Move) -> void:
 	refresh_ui()
 	
 func request_monster_move() -> void:
-	move_label.text = MONSTER_THINKING_STR
-	
 	var move = await APIClient.get_monster_move(monster.str_id, monster.hp, monster.max_hp, monster.active_effects,
 												hero.hp, hero.max_hp, hero.active_effects, turn)
 	if move == null:
@@ -89,7 +84,6 @@ func end_battle() -> void:
 	if current_player == FighterType.MONSTER:
 		hero_progress()
 	
-	print(hero.move_ids)
 	battle_over.emit(last_battle_result.xp_gained, last_battle_result.levels_gained, last_battle_result.move_learned)
 
 func hero_progress():
@@ -108,18 +102,15 @@ func hero_progress():
 		
 
 func set_up_ui() -> void:
-	$StatsContainer/HeroUI.bind(hero)
-	$StatsContainer/MonsterUI.bind(monster)
+	$MarginContainer/StatsContainer/HeroUI.bind(hero)
+	$MarginContainer/StatsContainer/MonsterUI.bind(monster)
 	
-	print(hero.equipped_move_ids)
 	for i in range(hero.equipped_move_ids.size()):
-		var move_id = hero.equipped_move_ids[i]
-		move_buttons[i].text = RunState.moves[move_id].name
-		move_buttons[i].pressed.connect(_on_move_button_pressed.bind(move_id))
-		move_buttons[i].tooltip_text = RunState.moves[move_id].description
+		var move = RunState.get_move_from_id(hero.equipped_move_ids[i])
+		move_cards[i].set_move(move)
+		move_cards[i].icon_button.pressed.connect(_on_move_button_pressed.bind(move_cards[i].move))
 		
 	refresh_ui()
 
 func refresh_ui() -> void:
-	move_label.text = MOVE_STR[current_player]
-	move_buttons_container.visible = (current_player == FighterType.HERO)
+	move_card_container.visible = (current_player == FighterType.HERO and not battle_finished)

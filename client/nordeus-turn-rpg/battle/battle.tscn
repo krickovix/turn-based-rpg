@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bpshd7iv7lyu"]
+[gd_scene load_steps=5 format=3 uid="uid://bpshd7iv7lyu"]
 
 [ext_resource type="Script" uid="uid://j5w8sanx8y6t" path="res://battle/battle.gd" id="1_mqutd"]
 [ext_resource type="PackedScene" uid="uid://cgmsrsyyxne85" path="res://fighter/fighter_ui/fighter_ui.tscn" id="2_tiqy5"]
+[ext_resource type="PackedScene" uid="uid://yuvr8u8fwvs5" path="res://moveset_manager/move_card/move_card.tscn" id="3_6hnvb"]
 [ext_resource type="PackedScene" uid="uid://ua3u5bro5tsy" path="res://battle/post_battle_screen/post_battle_screen.tscn" id="3_qubjc"]
 
 [node name="Battle" type="Control"]
@@ -13,61 +14,51 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_mqutd")
 
-[node name="StatsContainer" type="HBoxContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
-anchors_preset = 10
+anchors_preset = 15
 anchor_right = 1.0
-grow_horizontal = 2
-
-[node name="HeroUI" parent="StatsContainer" instance=ExtResource("2_tiqy5")]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="MonsterUI" parent="StatsContainer" instance=ExtResource("2_tiqy5")]
-layout_direction = 3
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 2.0
-
-[node name="MoveUI" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -108.0
-offset_top = -35.0
-offset_right = 108.0
-offset_bottom = 35.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 100
+
+[node name="StatsContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="HeroUI" parent="MarginContainer/StatsContainer" instance=ExtResource("2_tiqy5")]
+layout_mode = 2
+size_flags_vertical = 1
+
+[node name="MonsterUI" parent="MarginContainer/StatsContainer" instance=ExtResource("2_tiqy5")]
+layout_direction = 3
+layout_mode = 2
+
+[node name="MoveUI" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
 theme_override_constants/separation = 16
 alignment = 1
 
-[node name="MoveLabel" type="Label" parent="MoveUI"]
+[node name="MoveCardContainer" type="HBoxContainer" parent="MarginContainer/MoveUI"]
 layout_mode = 2
-text = "Your move!"
-horizontal_alignment = 1
+theme_override_constants/separation = 20
 
-[node name="MoveButtons" type="HBoxContainer" parent="MoveUI"]
+[node name="MoveCard" parent="MarginContainer/MoveUI/MoveCardContainer" instance=ExtResource("3_6hnvb")]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="MoveUI/MoveButtons"]
+[node name="MoveCard2" parent="MarginContainer/MoveUI/MoveCardContainer" instance=ExtResource("3_6hnvb")]
 layout_mode = 2
-text = "Move"
 
-[node name="Button2" type="Button" parent="MoveUI/MoveButtons"]
+[node name="MoveCard3" parent="MarginContainer/MoveUI/MoveCardContainer" instance=ExtResource("3_6hnvb")]
 layout_mode = 2
-text = "Move"
 
-[node name="Button3" type="Button" parent="MoveUI/MoveButtons"]
+[node name="MoveCard4" parent="MarginContainer/MoveUI/MoveCardContainer" instance=ExtResource("3_6hnvb")]
 layout_mode = 2
-text = "Move"
-
-[node name="Button4" type="Button" parent="MoveUI/MoveButtons"]
-layout_mode = 2
-text = "Move"
 
 [node name="PostBattlePanel" parent="." instance=ExtResource("3_qubjc")]
 visible = false

@@ -32,7 +32,6 @@ var xp_reward: int = 0
 var active_effects: Array[Effect] = []
 var move_ids: Array[int] = []
 
-
 func is_dead() -> bool:
 	return hp <= 0
 	
