@@ -11,6 +11,7 @@ const END_STR = ["Victory!", "You died."]
 @onready var level_up_label: Label = $LabelContainer/LevelUpContainer/LevelUpLabel
 @onready var stat_gains_label: Label = $LabelContainer/LevelUpContainer/StatGainsLabel
 @onready var learned_move_label: Label = $LabelContainer/LearnedMoveLabel
+@onready var learned_move_card: MoveCard = $LabelContainer/LearnedMoveCard
 @onready var back_button: Button = $LabelContainer/MarginContainer/BackButton
 
 
@@ -19,6 +20,7 @@ func _ready() -> void:
 	level_up_container.visible = false
 	xp_label.text = ""
 	learned_move_label.text = ""
+	learned_move_card.visible = false
 
 func _on_battle_battle_over(xp_gained: int, levels_gained: int, move_learned: Move) -> void:
 	visible = true
@@ -41,7 +43,10 @@ func _on_battle_battle_over(xp_gained: int, levels_gained: int, move_learned: Mo
 		]
 	
 	if move_learned:
-		learned_move_label.text = "Learned move: %s" % move_learned.name
+		learned_move_label.text = "You learned:"
+		learned_move_card.set_move(move_learned)
+		learned_move_card.set_big()
+		learned_move_card.visible = true
 	else:
 		learned_move_label.text = "You already know all moves of this monster."
 

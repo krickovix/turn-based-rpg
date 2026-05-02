@@ -1,9 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://ua3u5bro5tsy"]
+[gd_scene load_steps=5 format=3 uid="uid://ua3u5bro5tsy"]
 
 [ext_resource type="Script" uid="uid://brvfe0vh0woa6" path="res://battle/post_battle_screen/post_battle_screen.gd" id="1_ik1bs"]
+[ext_resource type="PackedScene" uid="uid://yuvr8u8fwvs5" path="res://moveset_manager/move_card/move_card.tscn" id="2_ioh7a"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ik1bs"]
 bg_color = Color(0, 0, 0, 0.7882353)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ioh7a"]
 
 [node name="PostBattlePanel" type="Panel"]
 anchors_preset = 15
@@ -32,7 +35,7 @@ alignment = 1
 
 [node name="HeaderLabel" type="Label" parent="LabelContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 32
 text = "Victory!"
 horizontal_alignment = 1
 
@@ -42,6 +45,7 @@ theme_override_constants/separation = 50
 
 [node name="XPLabel" type="Label" parent="LabelContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 28
 text = "+50 XP"
 horizontal_alignment = 1
 
@@ -61,11 +65,13 @@ theme_override_constants/separation = 50
 
 [node name="LevelUpLabel" type="Label" parent="LabelContainer/LevelUpContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 28
 text = "Level up! You are now level 2."
 horizontal_alignment = 1
 
 [node name="StatGainsLabel" type="Label" parent="LabelContainer/LevelUpContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 24
 text = "+10 HP   +3 ATK   +2 DEF   +1 MAG"
 horizontal_alignment = 1
 
@@ -75,8 +81,17 @@ theme_override_constants/separation = 50
 
 [node name="LearnedMoveLabel" type="Label" parent="LabelContainer"]
 layout_mode = 2
-text = "You learned: Head Kick!"
+theme_override_font_sizes/font_size = 28
+text = "You learned:"
 horizontal_alignment = 1
+
+[node name="HSeparator4" type="HSeparator" parent="LabelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+theme_override_styles/separator = SubResource("StyleBoxEmpty_ioh7a")
+
+[node name="LearnedMoveCard" parent="LabelContainer" instance=ExtResource("2_ioh7a")]
+layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="LabelContainer"]
 layout_mode = 2
@@ -86,6 +101,7 @@ theme_override_constants/margin_top = 50
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 24
 text = "Back to Map"
 
 [connection signal="pressed" from="LabelContainer/MarginContainer/BackButton" to="." method="_on_back_button_pressed"]
