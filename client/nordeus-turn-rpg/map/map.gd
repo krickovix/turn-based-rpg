@@ -2,18 +2,17 @@ extends Control
 
 const BATTLE_PATH = "res://battle/battle.tscn"
 const MENU_PATH = "res://main_menu/main_menu.tscn"
-const MOVESET_MANAGER_PATH = "res://battle/moveset_manager.tscn"
+const MOVESET_MANAGER_PATH = "res://moveset_manager/moveset_manager.tscn"
 
-@onready var start_battle_buttons : Array[Button] = [
-	$StartButtons/Button0, 
-	$StartButtons/Button1, 
-	$StartButtons/Button2, 
-	$StartButtons/Button3, 
-	$StartButtons/Button4
+@onready var run_complete_label: Label = $MarginContainer/HeaderContainer/RunCompleteLabel
+@onready var confirm_back_dialog: ConfirmationDialog = $MarginContainer/ConfirmBackDialog
+@onready var start_battle_buttons: Array[StartBattleButton] = [
+	$MarginContainer/StartButtonsContainer/StartBattleButton, 
+	$MarginContainer/StartButtonsContainer/StartBattleButton2, 
+	$MarginContainer/StartButtonsContainer/StartBattleButton3, 
+	$MarginContainer/StartButtonsContainer/StartBattleButton4, 
+	$MarginContainer/StartButtonsContainer/StartBattleButton5
 ]
-
-@onready var run_complete_label: Label = $RunCompleteLabel
-@onready var confirm_back_dialog: ConfirmationDialog = $ConfirmBackDialog
 
 
 func _ready() -> void:
@@ -21,21 +20,18 @@ func _ready() -> void:
 	run_complete_label.visible = run_done
 	
 	for i in range(RunState.monsters.size()):
-		var button: Button = start_battle_buttons[i]
-		var monster_name = RunState.monsters[i].name
+		var start_battle_button: StartBattleButton = start_battle_buttons[i]
+		start_battle_button.bind_fighter(i)
 		
-		button.pressed.connect(_on_encounter_pressed.bind(i))
+		start_battle_button.start_button_pressed.connect(_on_encounter_pressed.bind(i))
 		if i < RunState.max_encounter_index:
-			button.text = "✓ %s" % monster_name
-			button.disabled = false
-		elif i == RunState.max_encounter_index:
-			button.text = "▶ %s" % monster_name
+			start_battle_button.unlock()
 		else:
-			button.text = "🔒 %s" % monster_name
-			button.disabled = true
+			start_battle_button.lock()
 		
 
 func _on_encounter_pressed(index: int) -> void:
+	print(index)
 	RunState.current_encounter_index = index
 	get_tree().change_scene_to_file(BATTLE_PATH)
 

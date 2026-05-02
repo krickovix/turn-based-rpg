@@ -9,7 +9,7 @@ var current_encounter_index: int = 0
 
 
 func start_new_run() -> void:
-	max_encounter_index = 0
+	max_encounter_index = 1
 	current_encounter_index = 0
 	run_active = true
 
@@ -25,8 +25,6 @@ func roll_learned_move(monster: Fighter) -> Move:
 		if move_id in hero.move_ids:
 			continue
 		available.append(move_id)
-		
-	print(available)
 	
 	if available.is_empty():
 		return null

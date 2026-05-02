@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://byw6f5i3xcvfj"]
+[gd_scene load_steps=3 format=3 uid="uid://byw6f5i3xcvfj"]
 
 [ext_resource type="Script" uid="uid://dj4nxc6fs8ypy" path="res://map/map.gd" id="1_hgrid"]
+[ext_resource type="PackedScene" uid="uid://ci33kpcqdparm" path="res://battle/start_battle_button.tscn" id="2_a0dt8"]
 
 [node name="Map" type="Control"]
 layout_mode = 3
@@ -11,89 +12,81 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_hgrid")
 
-[node name="Label" type="Label" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -44.0
-offset_top = -11.5
-offset_right = 44.0
-offset_bottom = 11.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Map"
-horizontal_alignment = 1
-vertical_alignment = 1
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
 
-[node name="StartButtons" type="HBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -248.0
-offset_top = 26.0
-offset_right = 248.0
-offset_bottom = 57.0
-grow_horizontal = 2
-grow_vertical = 2
-alignment = 1
-
-[node name="Button0" type="Button" parent="StartButtons"]
+[node name="HeaderContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
-text = "Start Battle"
+theme_override_constants/separation = 50
 
-[node name="Button1" type="Button" parent="StartButtons"]
+[node name="RunCompleteLabel" type="Label" parent="MarginContainer/HeaderContainer"]
 layout_mode = 2
-text = "Start Battle"
-
-[node name="Button2" type="Button" parent="StartButtons"]
-layout_mode = 2
-text = "Start Battle"
-
-[node name="Button3" type="Button" parent="StartButtons"]
-layout_mode = 2
-text = "Start Battle"
-
-[node name="Button4" type="Button" parent="StartButtons"]
-layout_mode = 2
-text = "Start Battle"
-
-[node name="BackButton" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -65.0
-offset_top = 76.0
-offset_right = 65.0
-offset_bottom = 107.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Return to Menu"
-
-[node name="RunCompleteLabel" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -56.0
-offset_top = -64.0
-offset_right = 56.0
-offset_bottom = -41.0
-grow_horizontal = 2
-grow_vertical = 2
+theme_override_font_sizes/font_size = 32
 text = "Run complete!"
+horizontal_alignment = 1
 
-[node name="ConfirmBackDialog" type="ConfirmationDialog" parent="."]
+[node name="StartButtonsContainer" type="Control" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="StartBattleButton" parent="MarginContainer/StartButtonsContainer" instance=ExtResource("2_a0dt8")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 14.0
+offset_top = 230.0
+offset_right = 114.0
+offset_bottom = 330.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="StartBattleButton2" parent="MarginContainer/StartButtonsContainer" instance=ExtResource("2_a0dt8")]
+layout_mode = 1
+offset_left = -242.0
+offset_top = -2.0
+offset_right = -242.0
+offset_bottom = -2.0
+
+[node name="StartBattleButton3" parent="MarginContainer/StartButtonsContainer" instance=ExtResource("2_a0dt8")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 430.0
+offset_top = 222.0
+offset_right = 530.0
+offset_bottom = 322.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="StartBattleButton4" parent="MarginContainer/StartButtonsContainer" instance=ExtResource("2_a0dt8")]
+layout_mode = 1
+offset_left = 124.0
+offset_top = -60.0
+offset_right = 224.0
+offset_bottom = 40.0
+
+[node name="StartBattleButton5" parent="MarginContainer/StartButtonsContainer" instance=ExtResource("2_a0dt8")]
+layout_mode = 1
+offset_left = 328.0
+offset_top = -52.0
+offset_right = 428.0
+offset_bottom = 48.0
+
+[node name="ConfirmBackDialog" type="ConfirmationDialog" parent="MarginContainer"]
 oversampling_override = 1.0
 title = ""
 initial_position = 3
@@ -103,25 +96,25 @@ ok_button_text = "Confirm"
 dialog_text = "Are you sure? If you go back to Menu now, all progres will be lost..."
 dialog_autowrap = true
 
-[node name="MoveManagementButton" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -181.0
-offset_top = -15.5
-offset_bottom = 15.5
-grow_horizontal = 0
-grow_vertical = 2
+[node name="ButtonsContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/separation = 20
+
+[node name="MoveManagementButton" type="Button" parent="MarginContainer/ButtonsContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 28
 text = "Moveset Management"
 
-[connection signal="pressed" from="StartButtons/Button0" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="StartButtons/Button1" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="StartButtons/Button2" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="StartButtons/Button3" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="StartButtons/Button4" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
-[connection signal="confirmed" from="ConfirmBackDialog" to="." method="_on_confirmation_dialog_confirmed"]
-[connection signal="pressed" from="MoveManagementButton" to="." method="_on_move_management_button_pressed"]
+[node name="BackButton" type="Button" parent="MarginContainer/ButtonsContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 28
+text = "Return to Menu"
+
+[connection signal="confirmed" from="MarginContainer/ConfirmBackDialog" to="." method="_on_confirmation_dialog_confirmed"]
+[connection signal="pressed" from="MarginContainer/ButtonsContainer/MoveManagementButton" to="." method="_on_move_management_button_pressed"]
+[connection signal="pressed" from="MarginContainer/ButtonsContainer/BackButton" to="." method="_on_back_button_pressed"]
