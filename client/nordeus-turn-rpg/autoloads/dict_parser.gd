@@ -1,10 +1,11 @@
 extends Node
 
-const MOVE_EFFECTS = ["damage", "heal", "buff", "debuff"]
-const MOVE_TYPES = ["physical", "magic"]
+const STAT_STRINGS = ["health", "attack", "defense", "magic", "none"]
+const TYPE_STRINGS = ["damage", "heal", "buff", "debuff"]
+const TARGET_STRINGS = ["self", "enemy"]
 
-static func parse_hero(hero_dict: Dictionary) -> Fighter:
-	var hero: Fighter = Fighter.new()
+static func parse_hero(hero_dict: Dictionary) -> Player:
+	var hero := Player.new()
 	hero.name = hero_dict["name"]
 	hero.max_hp = int(hero_dict["base_stats"]["health"])
 	hero.hp = hero.max_hp
@@ -13,9 +14,9 @@ static func parse_hero(hero_dict: Dictionary) -> Fighter:
 	hero.magic = hero_dict["base_stats"]["magic"]
 	hero.move_ids = []
 	for move_str in hero_dict["default_moves"]:
-		var move = RunState.get_move_from_string(move_str)
+		var move := RunState.get_move_from_string(move_str)
 		if move: hero.move_ids.append(move.id)
-	
+	hero.equipped_move_ids = hero.move_ids.duplicate()
 	return hero
 	
 static func parse_monster(monster_dict: Dictionary) -> Fighter:
@@ -32,19 +33,30 @@ static func parse_monster(monster_dict: Dictionary) -> Fighter:
 	for move_str in monster_dict["moves"]:
 		var move = RunState.get_move_from_string(move_str)
 		if move: monster.move_ids.append(move.id)
+	monster.xp_reward = int(monster_dict.get("xp_reward", 0))
 	
 	return monster
 	
 	
 static func parse_move(move_dir: Dictionary) -> Move:
-	var move = Move.new()
+	var move := Move.new()
 	move.string_id = move_dir["id"]
 	move.name = move_dir["name"]
-	move.effect = MOVE_EFFECTS.find(move_dir["effect"]) as Move.EFFECT
-	move.type = MOVE_TYPES.find(move_dir["type"]) as Move.TYPE
-	move.base_value = move_dir["base_value"]	
 	move.description = move_dir["description"]
+	move.effects = []
+	for effect_dir in move_dir["effects"]:
+		move.effects.append(parse_effect(effect_dir))
 	return move
+
+
+static func parse_effect(effect_dir: Dictionary) -> Effect:
+	var effect := Effect.new()
+	effect.stat = STAT_STRINGS.find(effect_dir["stat"]) as Effect.STAT
+	effect.type = TYPE_STRINGS.find(effect_dir["type"]) as Effect.TYPE
+	effect.target = TARGET_STRINGS.find(effect_dir["target"]) as Effect.TARGET
+	effect.base_value = int(effect_dir["base_value"])
+	effect.turns_remaining = int(effect_dir["turns_remaining"])
+	return effect
 	
 	
 static func parse_next_monster_move(move_dir: Dictionary) -> Move:
@@ -64,14 +76,28 @@ static func parse_run_config(config: Dictionary) -> void:
 		RunState.monsters.append(parse_monster(monster))
 		
 		
-func create_monster_move_params(monster_str_id: String, monster_hp: int, monster_max_hp: int, 
-								hero_hp: int, hero_max_hp: int, turn: int) -> Dictionary:
+static func create_monster_move_params(monster_str_id: String, monster_hp: int, monster_max_hp: int, monster_effects: Array, 
+								hero_hp: int, hero_max_hp: int, hero_effects: Array, turn: int) -> Dictionary:
+	
+	var monster_effects_strings: Array[String] = []
+	for e in monster_effects:
+		monster_effects_strings.append(_effect_to_string(e))
+	var hero_effects_strings: Array[String] = []
+	for e in hero_effects:
+		hero_effects_strings.append(_effect_to_string(e))
+	
 	return {
 		"encounter_index": RunState.current_encounter_index,
 		"monster_id": monster_str_id,
 		"monster_hp": monster_hp,
 		"monster_max_hp": monster_max_hp,
+		"monster_effects": monster_effects_strings,
 		"hero_hp": hero_hp,
 		"hero_max_hp": hero_max_hp,
+		"hero_effects": hero_effects_strings,
 		"turn_number": turn
 	}
+	
+static func _effect_to_string(effect: Effect) -> String:
+	var stat_str = STAT_STRINGS[effect.stat]
+	return "%s:%d:%d" % [stat_str, effect.base_value, effect.turns_remaining]

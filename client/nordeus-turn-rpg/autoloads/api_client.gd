@@ -10,11 +10,12 @@ func get_run_config() -> void:
 	var response = await send_get(GET_RUN_CONFIG_URL, {})
 	DictParser.parse_run_config(response)
 
-func get_monster_move(monster_str_id: String, monster_hp: int, monster_max_hp: int, 
-						hero_hp: int, hero_max_hp: int, turn: int) -> Move:
+func get_monster_move(monster_str_id: String, monster_hp: int, monster_max_hp: int, monster_effects: Array,
+						hero_hp: int, hero_max_hp: int, hero_effects: Array, turn: int) -> Move:
 						
-	var params = DictParser.create_monster_move_params(monster_str_id, monster_hp, monster_max_hp,
-														hero_hp, hero_max_hp, turn)
+	var params = DictParser.create_monster_move_params(monster_str_id, monster_hp, monster_max_hp, monster_effects,
+														hero_hp, hero_max_hp, hero_effects, turn)
+	print(params)
 	var response = await send_get(GET_NEXT_MOVE_URL, params)
 	if response == null:
 		print("NO MONSTER RESPONSE")
