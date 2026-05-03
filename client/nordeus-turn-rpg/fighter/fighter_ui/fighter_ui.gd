@@ -3,11 +3,11 @@ extends Control
 const FLOATING_TEXT_LABEL = preload("res://components/floating_text_label/floating_text_label.tscn")
 const PLAYER_TEXTURE = "res://assets/sprites/player.tres"
 const MONSTER_TEXTURES: Array = [
-	"res://assets/sprites/monsters/goblin_warrior.tres",
-	"res://assets/sprites/monsters/goblin_mage.tres",
-	"res://assets/sprites/monsters/giant_spider.tres",
-	"res://assets/sprites/monsters/witch.tres",
-	"res://assets/sprites/monsters/dragon.tres",
+	"res://assets/sprites/monsters/goblin_warrior.png",
+	"res://assets/sprites/monsters/goblin_mage.png",
+	"res://assets/sprites/monsters/giant_spider.png",
+	"res://assets/sprites/monsters/witch.png",
+	"res://assets/sprites/monsters/dragon.png",
 ]
 const STAT_TEXTURES: Dictionary = {
 	Effect.STAT.ATTACK: "res://assets/icons/stats/attack.png",

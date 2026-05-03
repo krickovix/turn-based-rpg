@@ -4,11 +4,11 @@ extends CenterContainer
 signal start_button_pressed
 
 const MONSTER_TEXTURES: Array[String] = [
-	"res://assets/sprites/monsters/goblin_warrior.tres",
-	"res://assets/sprites/monsters/goblin_mage.tres",
-	"res://assets/sprites/monsters/giant_spider.tres",
-	"res://assets/sprites/monsters/witch.tres",
-	"res://assets/sprites/monsters/dragon.tres"
+	"res://assets/sprites/monsters/goblin_warrior.png",
+	"res://assets/sprites/monsters/goblin_mage.png",
+	"res://assets/sprites/monsters/giant_spider.png",
+	"res://assets/sprites/monsters/witch.png",
+	"res://assets/sprites/monsters/dragon.png"
 	
 ]
 
