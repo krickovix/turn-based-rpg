@@ -12,26 +12,28 @@ const MONSTER_TEXTURES: Array[String] = [
 	
 ]
 
-@onready var button: Button = $VBoxContainer/Button
-@onready var name_label: Label = $VBoxContainer/NameLabel
-@onready var locked_icon: TextureRect = $LockedIcon
+@onready var button: Button = $CenterContainer/VBoxContainer/Button
+@onready var fighter_icon: FighterIcon = $CenterContainer/VBoxContainer/Button/FighterIcon
+@onready var name_label: Label = $CenterContainer/VBoxContainer/NameLabel
+@onready var lock_icon: TextureRect = $LockIcon
 
 var monster: Fighter
 
 
 func bind_fighter(index: int):
 	monster = RunState.monsters[index]
-	button.icon = load(MONSTER_TEXTURES[index])
-	print(button.icon)
+	fighter_icon.set_texture(load(MONSTER_TEXTURES[index]))
 	name_label.text = monster.name
 	
 func unlock():
-	locked_icon.visible = false
+	lock_icon.visible = false
 	button.disabled = false
+	fighter_icon.unlock()
 	
 func lock():
-	locked_icon.visible = true
+	lock_icon.visible = true
 	button.disabled = true
+	fighter_icon.lock()
 
 func _on_button_pressed() -> void:
 	print("HERE")
