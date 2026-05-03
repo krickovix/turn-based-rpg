@@ -36,5 +36,4 @@ func lock():
 	fighter_icon.lock()
 
 func _on_button_pressed() -> void:
-	print("HERE")
 	start_button_pressed.emit()

@@ -62,7 +62,6 @@ func request_monster_move() -> void:
 	handle_monster_move(move)
 	
 func resolve_move(caster: Fighter, enemy: Fighter, move: Move):
-	print("\n--- Turn %d: %s uses %s ---" % [turn, FighterType.keys()[current_player], move.name])
 	caster.tick_active_effects()
 	
 	var side := BattleLog.Side.HERO if caster == hero else BattleLog.Side.MONSTER
@@ -101,7 +100,6 @@ func hero_progress():
 	
 	var learned := RunState.roll_learned_move(monster)
 	if learned:
-		print("Learned: %s" % learned.name)
 		last_battle_result.move_learned = learned
 		
 

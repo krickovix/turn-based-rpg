@@ -31,7 +31,6 @@ func _on_icon_button_pressed() -> void:
 		return
 	
 	if not selected_slot:
-		print("You have to select a move slot first")
 		return
 	
 	selected_slot.set_move(move)

@@ -40,7 +40,6 @@ func _ready() -> void:
 	back_icon_button.set_icon(MENU_STR, MENU_TEXTURE)
 
 func _on_encounter_pressed(index: int) -> void:
-	print(index)
 	RunState.current_encounter_index = index
 	get_tree().change_scene_to_file(BATTLE_PATH)
 

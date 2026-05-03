@@ -22,7 +22,6 @@ func gain_xp(amount: int) -> int:
 		
 func level_up():
 	level += 1
-	print("LEVEL UP!")
 	max_hp += HEALTH_GAIN
 	attack += ATTACK_GAIN
 	defense += DEFENSE_GAIN
