@@ -2,7 +2,7 @@ class_name Fighter
 extends RefCounted
 
 signal hp_changed(new_hp: int, max_hp: int)
-signal effects_changed
+signal effects_changed(effect: Effect)
 signal died
 
 var index: int = -1
@@ -45,7 +45,7 @@ func apply(effect: Effect) -> void:
 	effect.resolve()
 	if effect.turns_remaining > 0:
 		active_effects.append(effect)
-		effects_changed.emit()
+	effects_changed.emit(effect)
 	
 func tick_active_effects() -> void:
 	var i = active_effects.size()-1

@@ -57,8 +57,12 @@ func _on_hp_changed(new_hp: int, max_hp: int) -> void:
 	defense_label.text = str(fighter.defense)
 	magic_label.text = str(fighter.magic)
 	
-func _refresh_effects() -> void:
+func _refresh_effects(new_effect: Effect) -> void:
 	if fighter == null:
+		return
+		
+	if new_effect and new_effect.turns_remaining <= 0:
+		play_effect_animation(new_effect)
 		return
 	
 	for effect in fighter.active_effects:
@@ -66,6 +70,7 @@ func _refresh_effects() -> void:
 		stat += effect.base_value
 		stat_labels[effect.stat].text = str(stat)
 		
+		play_effect_animation(effect)
 		show_floating_effect(effect)
 
 const TYPE_COLORS := {
@@ -74,6 +79,67 @@ const TYPE_COLORS := {
 	Effect.TYPE.BUFF: "66dd66",
 	Effect.TYPE.DEBUFF: "ee6666",
 }
+
+const STAT_COLORS := {
+	Effect.STAT.ATTACK: Color(1.0, 0.6, 0.4),
+	Effect.STAT.DEFENSE: Color(0.5, 0.7, 1.0),
+	Effect.STAT.MAGIC: Color(0.8, 0.5, 1.0),  
+	Effect.STAT.HEALTH: Color(0.4, 1.0, 0.5), 
+}
+
+func play_effect_animation(effect: Effect):
+	match effect.type:
+		Effect.TYPE.DAMAGE:
+			play_hit_animation()
+			flash_color(STAT_COLORS[effect.stat], 0.25)
+		Effect.TYPE.HEAL:
+			play_heal_animation()
+		Effect.TYPE.BUFF:
+			play_buff_animation(STAT_COLORS.get(effect.stat, Color.WHITE))
+		Effect.TYPE.DEBUFF:
+			play_debuff_animation(STAT_COLORS.get(effect.stat, Color.WHITE))
+			
+func play_heal_animation() -> void:
+	var tween := create_tween().set_parallel(true)
+	tween.tween_property(self, "modulate", Color(0.6, 1.5, 0.7), 0.2)  # bright green
+	tween.tween_property(self, "scale", Vector2(1.1, 1.1), 0.2).set_trans(Tween.TRANS_QUAD)
+	tween.chain().set_parallel(true)
+	tween.tween_property(self, "modulate", Color.WHITE, 0.3)
+	tween.tween_property(self, "scale", Vector2(1, 1), 0.3)
+	
+func play_buff_animation(stat_color: Color) -> void:
+	var tween := create_tween().set_parallel(true)
+	tween.tween_property(self, "scale", Vector2(1.15, 1.15), 0.2).set_trans(Tween.TRANS_BACK)
+	tween.tween_property(self, "modulate", stat_color, 0.2)
+	tween.chain().set_parallel(true)
+	tween.tween_property(self, "scale", Vector2(1, 1), 0.2)
+	tween.tween_property(self, "modulate", Color.WHITE, 0.2)
+	
+func play_debuff_animation(stat_color: Color) -> void:
+	var tween := create_tween().set_parallel(true)
+	tween.tween_property(self, "scale", Vector2(0.9, 0.9), 0.2).set_trans(Tween.TRANS_QUAD)
+	tween.tween_property(self, "modulate", stat_color.darkened(0.3), 0.2)
+	tween.chain().set_parallel(true)
+	tween.tween_property(self, "scale", Vector2(1, 1), 0.25)
+	tween.tween_property(self, "modulate", Color.WHITE, 0.25)
+	
+func flash_color(color: Color, duration: float = 0.2) -> void:
+	var tween := create_tween()
+	tween.tween_property(self, "modulate", color, duration / 2)
+	tween.tween_property(self, "modulate", Color.WHITE, duration / 2)
+	
+func play_hit_animation() -> void:
+	var original_pos := position
+	var tween := create_tween()
+	for i in 4:
+		tween.tween_property(self, "position", original_pos + Vector2(randf_range(-4, 4), 0), 0.04)
+	tween.tween_property(self, "position", original_pos, 0.04)
+	
+func play_attack_animation(direction: Vector2) -> void:
+	var original_pos := position
+	var tween := create_tween()
+	tween.tween_property(self, "position", original_pos + direction * 30, 0.1)
+	tween.tween_property(self, "position", original_pos, 0.15)
 
 func show_floating_effect(effect: Effect) -> void:
 	var bbcode := _build_floating_bbcode(effect)
