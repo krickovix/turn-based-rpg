@@ -94,7 +94,8 @@ static func create_monster_move_params(monster_str_id: String, monster_hp: int, 
 		"hero_effects": hero_effects_strings,
 		"turn_number": turn
 	}
-	
+
 static func _effect_to_string(effect: Effect) -> String:
 	var stat_str = STAT_STRINGS[effect.stat]
-	return "%s:%d:%d" % [stat_str, effect.base_value, effect.turns_remaining]
+	var type_str = TYPE_STRINGS[effect.type]
+	return "%s:%s:%d:%d" % [stat_str, type_str, effect.base_value, effect.turns_remaining]
