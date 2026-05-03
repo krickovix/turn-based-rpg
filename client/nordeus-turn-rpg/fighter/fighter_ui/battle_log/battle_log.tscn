@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://b1lefajod0wml"]
+
+[ext_resource type="Script" uid="uid://clsrhhq7ouujo" path="res://fighter/fighter_ui/battle_log/battle_log.gd" id="1_twodd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_twodd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jns0d"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dinyo"]
+
+[node name="BattleLog" type="PanelContainer"]
+offset_right = 300.0
+offset_bottom = 200.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_twodd")
+script = ExtResource("1_twodd")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_top = 50
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(250, 200)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_jns0d")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_dinyo")
+horizontal_scroll_mode = 0
+
+[node name="EntriesContainer" type="VBoxContainer" parent="MarginContainer/ScrollContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10

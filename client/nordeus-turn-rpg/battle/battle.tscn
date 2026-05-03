@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://bpshd7iv7lyu"]
+[gd_scene load_steps=7 format=3 uid="uid://bpshd7iv7lyu"]
 
 [ext_resource type="Script" uid="uid://j5w8sanx8y6t" path="res://battle/battle.gd" id="1_mqutd"]
 [ext_resource type="PackedScene" uid="uid://cgmsrsyyxne85" path="res://fighter/fighter_ui/fighter_ui.tscn" id="2_tiqy5"]
-[ext_resource type="PackedScene" uid="uid://yuvr8u8fwvs5" path="res://moveset_manager/move_card/move_card.tscn" id="3_6hnvb"]
+[ext_resource type="PackedScene" uid="uid://yuvr8u8fwvs5" path="res://components/move_card/move_card.tscn" id="3_6hnvb"]
 [ext_resource type="PackedScene" uid="uid://ua3u5bro5tsy" path="res://battle/post_battle_screen/post_battle_screen.tscn" id="3_qubjc"]
+[ext_resource type="Texture2D" uid="uid://cp51g1lt2530" path="res://assets/backgrounds/Battleground1-pale.png" id="5_4mnim"]
+[ext_resource type="PackedScene" uid="uid://b1lefajod0wml" path="res://fighter/fighter_ui/battle_log/battle_log.tscn" id="5_l1kiu"]
 
 [node name="Battle" type="Control"]
 layout_mode = 3
@@ -13,6 +15,17 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_mqutd")
+
+[node name="Background" type="TextureRect" parent="."]
+modulate = Color(0.57996243, 0.57996243, 0.57996243, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_4mnim")
+expand_mode = 5
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -24,10 +37,11 @@ grow_vertical = 2
 theme_override_constants/margin_left = 50
 theme_override_constants/margin_top = 50
 theme_override_constants/margin_right = 50
-theme_override_constants/margin_bottom = 100
+theme_override_constants/margin_bottom = 50
 
 [node name="StatsContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
+theme_override_constants/separation = 200
 
 [node name="HeroUI" parent="MarginContainer/StatsContainer" instance=ExtResource("2_tiqy5")]
 layout_mode = 2
@@ -59,6 +73,11 @@ layout_mode = 2
 
 [node name="MoveCard4" parent="MarginContainer/MoveUI/MoveCardContainer" instance=ExtResource("3_6hnvb")]
 layout_mode = 2
+
+[node name="BattleLog" parent="MarginContainer" instance=ExtResource("5_l1kiu")]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
 
 [node name="PostBattlePanel" parent="." instance=ExtResource("3_qubjc")]
 visible = false

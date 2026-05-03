@@ -11,6 +11,7 @@ enum FighterType{HERO, MONSTER}
 	$MarginContainer/MoveUI/MoveCardContainer/MoveCard3, 
 	$MarginContainer/MoveUI/MoveCardContainer/MoveCard4
 ]
+@onready var battle_log: BattleLog = $MarginContainer/BattleLog
 
 var turn: int = 0
 var current_player: FighterType
@@ -63,6 +64,9 @@ func request_monster_move() -> void:
 func resolve_move(caster: Fighter, enemy: Fighter, move: Move):
 	print("\n--- Turn %d: %s uses %s ---" % [turn, FighterType.keys()[current_player], move.name])
 	caster.tick_active_effects()
+	
+	var side := BattleLog.Side.HERO if caster == hero else BattleLog.Side.MONSTER
+	battle_log.add_entry("%s used %s [img=24]%s[/img] " % [caster.name, move.name, move.icon.resource_path])
 	
 	for effect in move.effects:
 		var clone := effect.clone()
