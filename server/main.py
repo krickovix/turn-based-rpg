@@ -1,10 +1,18 @@
 import random
 from typing import List, Optional
 from fastapi import Query, FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from data_loader import load_data
 from bot import choose_move
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.get("/")
 def root():
