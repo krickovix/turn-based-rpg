@@ -52,15 +52,14 @@ def _score_move(move: dict,
         
         elif effect_type == "damage":
             base = effect["base_value"]
-            if hero_hp_ratio < HERO_KILLABLE_HP and base >= 25:
+            if hero_hp_ratio < HERO_KILLABLE_HP and base > 20:
                 score += 6.0
                 reasons.append("hero low, finisher prioritized")
-            else:
-                score += 1.0
-                reasons.append(f"damage {base}")
+            score += 8 + base
+            reasons.append(f"damage {base}")
         
         else:
-            score += 10
+            score += effect["base_value"]*0.8
             reasons.append(f"{effect_type} {effect['stat']}")
     
     reason_str = "; ".join(reasons) if reasons else "default"
