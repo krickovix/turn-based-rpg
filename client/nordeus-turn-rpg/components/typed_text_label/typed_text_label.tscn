@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://y6hqpvt7liq3"]
+
+[ext_resource type="Script" uid="uid://807opuakryee" path="res://components/typed_text_label/typed_text_label.gd" id="1_0qlv6"]
+
+[node name="TypedTextLabel" type="RichTextLabel"]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/normal_font_size = 24
+script = ExtResource("1_0qlv6")
