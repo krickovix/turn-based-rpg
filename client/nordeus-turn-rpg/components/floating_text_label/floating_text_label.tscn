@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxmy4xk23gaub"]
+
+[ext_resource type="Script" uid="uid://dgbyd875w8lp1" path="res://components/floating_text_label/floating_text_label.gd" id="1_g3ilp"]
+
+[node name="FloatingTextLabel" type="RichTextLabel"]
+custom_minimum_size = Vector2(400, 200)
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+script = ExtResource("1_g3ilp")
