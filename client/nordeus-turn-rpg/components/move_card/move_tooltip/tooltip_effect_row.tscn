@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://bsqe3iv6smq5o"]
+
+[ext_resource type="Script" uid="uid://ddxtbg0mxrbpm" path="res://components/move_card/move_tooltip/tooltip_effect_row.gd" id="1_mhkla"]
+
+[node name="TooltipEffectRow" type="HBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_mhkla")
+
+[node name="ValueLabel" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(300, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "hgcjhgjhgc"
+fit_content = true
+autowrap_mode = 0

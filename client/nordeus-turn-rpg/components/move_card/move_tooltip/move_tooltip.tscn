@@ -1,0 +1,60 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7q3ll3dgldtr"]
+
+[ext_resource type="Script" uid="uid://5yvdtiuna7me" path="res://components/move_card/move_tooltip/move_tooltip.gd" id="1_2sl5w"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2sl5w"]
+bg_color = Color(0.11207495, 0.11207495, 0.11207495, 0.768)
+
+[node name="MoveTooltip" type="PanelContainer"]
+custom_minimum_size = Vector2(250, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -341.5
+offset_top = -62.5
+offset_right = -21.5
+offset_bottom = 62.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2sl5w")
+script = ExtResource("1_2sl5w")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_filter = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_filter = 2
+theme_override_constants/separation = 10
+
+[node name="NameLabel" type="Label" parent="MarginContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 28
+text = "Firebolt"
+
+[node name="DescriptionLabel" type="Label" parent="MarginContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 24
+text = "Hurl a bolt of flame. Moderate damage. Scales with Magic, ignores Defense."
+autowrap_mode = 3
+
+[node name="EffectsContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_filter = 2

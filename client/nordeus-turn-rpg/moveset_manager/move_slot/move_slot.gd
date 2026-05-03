@@ -20,7 +20,7 @@ func set_move(move: Move) -> void:
 func remove_modulate():
 	for child in get_children():
 			if child is MoveCard:
-				child.icon_container.modulate = Color.WHITE
+				child.icon_button.modulate = Color.WHITE
 				
 func _remove_card():
 	for child in get_children():

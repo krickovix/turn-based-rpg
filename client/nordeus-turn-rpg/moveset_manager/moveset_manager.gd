@@ -2,6 +2,8 @@ class_name MovesetManager
 extends Control
 
 const MAP_PATH = "res://map/map.tscn"
+const MAP_STR = "Map"
+const MAP_TEXTURE = "res://assets/icons/scroll_icon.tres"
 
 const MOVE_CARD = preload("uid://yuvr8u8fwvs5")
 
@@ -14,14 +16,17 @@ const HIGHLIGHT_COLOR = Color(1, 1, 0)
 	$VBoxContainer/EquippedSlotsContainer/MoveSlot3, 
 	$VBoxContainer/EquippedSlotsContainer/MoveSlot4
 	]
+@onready var icon_button: IconButton = $MarginContainer/IconButton
 
 var selected_equipped_index: int = -1
+
 
 func _ready() -> void:
 	for i in range(equipped_slots.size()):
 		equipped_slots[i].slot_index = i
 	_populate_equipped_slots()
 	refresh_pool()
+	icon_button.set_icon(MAP_STR, MAP_TEXTURE)
 		
 func _populate_equipped_slots():
 	var move_ids = RunState.hero.equipped_move_ids
@@ -41,5 +46,5 @@ func refresh_pool():
 		card.set_move(move)
 		card.icon_button.disabled = move_id in RunState.hero.equipped_move_ids
 
-func _on_back_button_pressed() -> void:
+func _on_icon_button_pressed() -> void:
 	get_tree().change_scene_to_file(MAP_PATH)
