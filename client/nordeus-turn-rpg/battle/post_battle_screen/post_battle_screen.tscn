@@ -5,34 +5,43 @@
 [ext_resource type="PackedScene" uid="uid://yuvr8u8fwvs5" path="res://components/move_card/move_card.tscn" id="2_ioh7a"]
 [ext_resource type="Texture2D" uid="uid://tt8h7yntbshq" path="res://assets/borders/ornament1-3.png" id="3_8b73x"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ik1bs"]
-bg_color = Color(0, 0, 0, 0.7882353)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8b73x"]
+bg_color = Color(0.16409835, 0.16409835, 0.16409835, 0.873)
+expand_margin_left = 20.0
+expand_margin_top = 50.0
+expand_margin_right = 20.0
+expand_margin_bottom = 50.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tc80j"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ioh7a"]
 
-[node name="PostBattlePanel" type="Panel"]
+[node name="PostBattlePanel" type="CanvasLayer"]
+layer = 10
+follow_viewport_enabled = true
+script = ExtResource("1_ik1bs")
+
+[node name="Panel" type="Panel" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_ik1bs")
-script = ExtResource("1_ik1bs")
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_8b73x")
 
 [node name="LabelContainer" type="VBoxContainer" parent="."]
 custom_minimum_size = Vector2(500, 0)
-layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -127.5
-offset_top = -149.0
-offset_right = 127.5
-offset_bottom = 149.0
+offset_left = -250.0
+offset_top = -315.5
+offset_right = 250.0
+offset_bottom = 315.5
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1

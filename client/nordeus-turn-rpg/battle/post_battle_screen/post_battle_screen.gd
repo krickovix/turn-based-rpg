@@ -1,4 +1,4 @@
-extends Panel
+extends CanvasLayer
 
 const MAP_PATH = "res://map/map.tscn"
 
