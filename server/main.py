@@ -6,6 +6,9 @@ from bot import choose_move
 
 app = FastAPI()
 
+@app.get("/")
+def root():
+    return {"status": "ok", "service": "rpg-server"}
 
 @app.get("/run/new")
 def new_run():
