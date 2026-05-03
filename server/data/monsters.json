@@ -51,10 +51,10 @@
     "monster_id": "dragon",
     "name": "Dragon",
     "stats": {
-      "health": 140,
-      "attack": 30,
-      "defense": 20,
-      "magic": 18
+      "health": 120,
+      "attack": 15,
+      "defense": 15,
+      "magic": 13
     },
     "moves": ["flame_breath", "claw_swipe", "intimidate", "dragon_scales"],
     "xp_reward": 110
