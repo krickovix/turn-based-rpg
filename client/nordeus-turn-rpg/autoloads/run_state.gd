@@ -9,7 +9,7 @@ var current_encounter_index: int = 0
 
 
 func start_new_run() -> void:
-	max_encounter_index = 1
+	max_encounter_index = 0
 	current_encounter_index = 0
 	run_active = true
 
