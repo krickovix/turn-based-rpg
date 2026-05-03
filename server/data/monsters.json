@@ -17,7 +17,7 @@
     "stats": {
       "health": 70,
       "attack": 6,
-      "defense": 16,
+      "defense": 8,
       "magic": 16
     },
     "moves": ["firebolt", "arcane_surge", "mana_drain", "hex_shield"],
@@ -28,8 +28,8 @@
     "name": "Giant Spider",
     "stats": {
       "health": 75,
-      "attack": 14,
-      "defense": 8,
+      "attack": 15,
+      "defense": 12,
       "magic": 0
     },
     "moves": ["bite", "web_throw", "pounce", "skitter"],
@@ -41,7 +41,7 @@
     "stats": {
       "health": 90,
       "attack": 5,
-      "defense": 8,
+      "defense": 12,
       "magic": 20
     },
     "moves": ["shadow_bolt", "drain_life", "curse", "dark_pact"],
@@ -52,8 +52,8 @@
     "name": "Dragon",
     "stats": {
       "health": 140,
-      "attack": 18,
-      "defense": 14,
+      "attack": 20,
+      "defense": 16,
       "magic": 18
     },
     "moves": ["flame_breath", "claw_swipe", "intimidate", "dragon_scales"],

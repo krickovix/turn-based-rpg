@@ -22,6 +22,7 @@ def choose_move(monster: dict, monster_hp: int, monster_max_hp: int,
         scored.append((score, move_id, reason))
     
     scored.sort(key=lambda x: x[0], reverse=True)
+    print(scored)
     
     best_score, best_id, best_reason = scored[0]
     return best_id, best_reason

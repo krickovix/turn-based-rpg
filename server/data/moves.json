@@ -4,7 +4,7 @@
     "name": "Slash",
     "description": "A clean strike. Scales with Attack, reduced by enemy Defense.",
     "effects": [
-      { "type": "damage", "stat": "attack", "target": "enemy", "base_value": 20, "turns_remaining": 0 }
+      { "type": "damage", "stat": "attack", "target": "enemy", "base_value": 15, "turns_remaining": 0 }
     ]
   },
   "shield_up": {
@@ -54,7 +54,7 @@
     "name": "Frenzy",
     "description": "Whip into a fury. Raises your Attack for 2 turns.",
     "effects": [
-      { "type": "buff", "stat": "attack", "target": "self", "base_value": 5, "turns_remaining": 2 }
+      { "type": "buff", "stat": "attack", "target": "self", "base_value": 7, "turns_remaining": 2 }
     ]
   },
   "headbutt": {
@@ -62,7 +62,7 @@
     "name": "Headbutt",
     "description": "A reckless skull-first charge. Heavy damage.",
     "effects": [
-      { "type": "damage", "stat": "attack", "target": "enemy", "base_value": 18, "turns_remaining": 0 }
+      { "type": "damage", "stat": "attack", "target": "enemy", "base_value": 20, "turns_remaining": 0 }
     ]
   },
 
@@ -79,7 +79,7 @@
     "name": "Web Throw",
     "description": "Sticky strands tangle the target. Light damage, lowers Defense for 2 turns.",
     "effects": [
-      { "type": "damage", "stat": "attack",  "target": "enemy", "base_value": 20, "turns_remaining": 0 },
+      { "type": "damage", "stat": "attack",  "target": "enemy", "base_value": 15, "turns_remaining": 0 },
       { "type": "debuff", "stat": "defense", "target": "enemy", "base_value": 10,  "turns_remaining": 2 }
     ]
   },
@@ -88,7 +88,7 @@
     "name": "Pounce",
     "description": "Leap and strike with full weight. Heavy damage.",
     "effects": [
-      { "type": "damage", "stat": "attack", "target": "enemy", "base_value": 50, "turns_remaining": 0 }
+      { "type": "damage", "stat": "attack", "target": "enemy", "base_value": 30, "turns_remaining": 0 }
     ]
   },
   "skitter": {
@@ -156,7 +156,7 @@
     "name": "Curse",
     "description": "Whisper a hex. Lowers target's Attack for 2 turns.",
     "effects": [
-      { "type": "debuff", "stat": "attack", "target": "enemy", "base_value": 5, "turns_remaining": 2 }
+      { "type": "debuff", "stat": "attack", "target": "enemy", "base_value": 10, "turns_remaining": 2 }
     ]
   },
   "dark_pact": {
@@ -165,7 +165,7 @@
     "description": "Sacrifice HP for power. Raises your Magic for 2 turns at the cost of 10 HP.",
     "effects": [
       { "type": "damage", "stat": "none",  "target": "self", "base_value": 10, "turns_remaining": 0 },
-      { "type": "buff",   "stat": "magic", "target": "self", "base_value": 5,  "turns_remaining": 2 }
+      { "type": "buff",   "stat": "magic", "target": "self", "base_value": 10,  "turns_remaining": 2 }
     ]
   },
 
@@ -174,7 +174,7 @@
     "name": "Flame Breath",
     "description": "Exhale a torrent of fire. Heavy damage. Scales with Magic, ignores Defense.",
     "effects": [
-      { "type": "damage", "stat": "magic", "target": "enemy", "base_value": 28, "turns_remaining": 0 }
+      { "type": "damage", "stat": "magic", "target": "enemy", "base_value": 34, "turns_remaining": 0 }
     ]
   },
   "claw_swipe": {
@@ -182,7 +182,7 @@
     "name": "Claw Swipe",
     "description": "Rake with massive claws. Moderate damage.",
     "effects": [
-      { "type": "damage", "stat": "attack", "target": "enemy", "base_value": 20, "turns_remaining": 0 }
+      { "type": "damage", "stat": "attack", "target": "enemy", "base_value": 25, "turns_remaining": 0 }
     ]
   },
   "intimidate": {
@@ -190,7 +190,7 @@
     "name": "Intimidate",
     "description": "A terrifying roar. Lowers target's Attack for 2 turns.",
     "effects": [
-      { "type": "debuff", "stat": "attack", "target": "enemy", "base_value": 5, "turns_remaining": 2 }
+      { "type": "debuff", "stat": "attack", "target": "enemy", "base_value": 10, "turns_remaining": 2 }
     ]
   },
   "dragon_scales": {
@@ -198,7 +198,7 @@
     "name": "Dragon Scales",
     "description": "Scales harden into armor. Raises your Defense for 2 turns.",
     "effects": [
-      { "type": "buff", "stat": "defense", "target": "self", "base_value": 5, "turns_remaining": 2 }
+      { "type": "buff", "stat": "defense", "target": "self", "base_value": 15, "turns_remaining": 2 }
     ]
   }
 }

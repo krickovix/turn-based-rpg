@@ -65,7 +65,10 @@ func resolve_move(caster: Fighter, enemy: Fighter, move: Move):
 	caster.tick_active_effects()
 	
 	var side := BattleLog.Side.HERO if caster == hero else BattleLog.Side.MONSTER
-	battle_log.add_entry("%s used %s [img=24]%s[/img] " % [caster.name, move.name, move.icon.resource_path])
+	var text = "%s used %s" % [caster.name, move.name]
+	if move.icon:
+		text += "[img=24]%s[/img] " % [move.icon.resource_path]
+	battle_log.add_entry(text)
 	
 	for effect in move.effects:
 		var clone := effect.clone()
