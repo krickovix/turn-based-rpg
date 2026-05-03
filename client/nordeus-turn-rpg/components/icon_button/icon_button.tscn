@@ -1,0 +1,56 @@
+[gd_scene load_steps=3 format=3 uid="uid://d351pm1mog6y0"]
+
+[ext_resource type="Script" uid="uid://c67cy5h1ivx67" path="res://components/icon_button/icon_button.gd" id="1_dklgb"]
+[ext_resource type="Texture2D" uid="uid://clvv6jccpf1r8" path="res://assets/icons/book_icon.tres" id="1_qc4q5"]
+
+[node name="IconButton" type="Button"]
+custom_minimum_size = Vector2(80, 80)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 40.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+script = ExtResource("1_dklgb")
+
+[node name="MovesetManagerShadow" type="TextureRect" parent="."]
+modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 0
+offset_right = 80.0
+offset_bottom = 80.0
+texture = ExtResource("1_qc4q5")
+
+[node name="MovesetManagerIcon" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_qc4q5")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -36.0
+offset_top = 10.0
+offset_right = 36.0
+offset_bottom = 29.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 24
+text = "Moveset Manager"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
