@@ -12,9 +12,6 @@ def choose_move(monster: dict, monster_hp: int, monster_max_hp: int,
   
     monster_hp_ratio = monster_hp / monster_max_hp
     hero_hp_ratio = hero_hp / hero_max_hp
-
-    print(monster_effects)
-    print(hero_effects)
     
     scored = []
     for move_id in monster["moves"]:
