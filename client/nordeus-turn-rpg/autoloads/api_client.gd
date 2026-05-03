@@ -1,6 +1,6 @@
 extends Node
 
-const SERVER_URL = "http://127.0.0.1:8000"
+const SERVER_URL = "https://turn-based-rpg.onrender.com"
 const GET_RUN_CONFIG_URL = "/run/new"
 const GET_NEXT_MOVE_URL = "/battle/next-move"
 
