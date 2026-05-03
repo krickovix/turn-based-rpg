@@ -3,11 +3,17 @@ extends Panel
 const MAP_PATH = "res://map/map.tscn"
 
 const END_STR = ["Victory!", "You died."]
+const STAT_TEXTURES: Dictionary = {
+	Effect.STAT.HEALTH: "res://assets/icons/stats/health.png",
+	Effect.STAT.ATTACK: "res://assets/icons/stats/attack.png",
+	Effect.STAT.DEFENSE: "res://assets/icons/stats/defense.png",
+	Effect.STAT.MAGIC: "res://assets/icons/stats/magic.png"
+}
 
 @onready var header_label: Label = $LabelContainer/HeaderLabel
 @onready var level_up_container: VBoxContainer = $LabelContainer/LevelUpContainer
 @onready var level_up_label: Label = $LabelContainer/LevelUpContainer/LevelUpLabel
-@onready var stat_gains_label: Label = $LabelContainer/LevelUpContainer/StatGainsLabel
+@onready var stat_gains_label: RichTextLabel = $LabelContainer/LevelUpContainer/StatGainsLabel
 @onready var learned_move_label: Label = $LabelContainer/LearnedMoveLabel
 @onready var learned_move_card: MoveCard = $LabelContainer/LearnedMoveCard
 @onready var back_button: Button = $LabelContainer/MarginContainer/BackButton
@@ -27,9 +33,12 @@ func _on_battle_battle_over(xp_gained: int, levels_gained: int, move_learned: Mo
 	if levels_gained > 0:
 		level_up_container.visible = true
 		level_up_label.text = "Level up! You are now level %d." % RunState.hero.level
-		stat_gains_label.text = "+%d HP   +%d ATK   +%d DEF   +%d MAG" % [
-			RunState.hero.HEALTH_GAIN, RunState.hero.ATTACK_GAIN, 
-			RunState.hero.DEFENSE_GAIN, RunState.hero.MAGIC_GAIN
+		stat_gains_label.bbcode_enabled = true
+		stat_gains_label.text = "+%d [img=24]%s[/img] HP   +%d [img=24]%s[/img] ATK   +%d [img=24]%s[/img] DEF   +%d [img=24]%s[/img] MAG" % [
+			RunState.hero.HEALTH_GAIN, STAT_TEXTURES[Effect.STAT.HEALTH],
+			RunState.hero.ATTACK_GAIN, STAT_TEXTURES[Effect.STAT.ATTACK],
+			RunState.hero.DEFENSE_GAIN, STAT_TEXTURES[Effect.STAT.DEFENSE],
+			RunState.hero.MAGIC_GAIN, STAT_TEXTURES[Effect.STAT.MAGIC],
 		]
 	
 	if move_learned:
