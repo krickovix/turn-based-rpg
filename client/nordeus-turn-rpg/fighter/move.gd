@@ -16,5 +16,5 @@ func _init(str_id: String, n: String, desc: String) -> void:
 	string_id = str_id
 	name = n
 	description = desc
-	icon = load("res://assets/sprites/moves/32x32/" + string_id + ".png")
-	icon_big = load("res://assets/sprites/moves/64x64/" + string_id + ".png")
+	icon = load("res://assets/icons/moves/32x32/" + string_id + ".png")
+	icon_big = load("res://assets/icons/moves/64x64/" + string_id + ".png")
