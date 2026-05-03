@@ -1,7 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://byw6f5i3xcvfj"]
+[gd_scene load_steps=8 format=3 uid="uid://byw6f5i3xcvfj"]
 
 [ext_resource type="Script" uid="uid://dj4nxc6fs8ypy" path="res://map/map.gd" id="1_hgrid"]
-[ext_resource type="PackedScene" uid="uid://ci33kpcqdparm" path="res://battle/start_battle_button.tscn" id="2_a0dt8"]
+[ext_resource type="Texture2D" uid="uid://dc6fli28gkqog" path="res://assets/backgrounds/Battleground3-pale.png" id="2_4hjbm"]
+[ext_resource type="PackedScene" uid="uid://ci33kpcqdparm" path="res://components/start_battle_button/start_battle_button.tscn" id="2_a0dt8"]
+[ext_resource type="PackedScene" uid="uid://d351pm1mog6y0" path="res://components/icon_button/icon_button.tscn" id="3_kffv2"]
+[ext_resource type="PackedScene" uid="uid://y6hqpvt7liq3" path="res://components/typed_text_label/typed_text_label.tscn" id="4_7lyie"]
+[ext_resource type="PackedScene" uid="uid://ctj3k00kali5m" path="res://components/confirm_pop_up/confirm_pop_up.tscn" id="5_kffv2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4hjbm"]
 
 [node name="Map" type="Control"]
 layout_mode = 3
@@ -12,11 +18,24 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_hgrid")
 
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_4hjbm")
+expand_mode = 5
+stretch_mode = 4
+
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -54.5
+offset_bottom = 54.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 50
@@ -24,97 +43,74 @@ theme_override_constants/margin_top = 50
 theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 50
 
-[node name="HeaderContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="HSeparator2" type="HSeparator" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 50
+theme_override_styles/separator = SubResource("StyleBoxEmpty_4hjbm")
 
-[node name="RunCompleteLabel" type="Label" parent="MarginContainer/HeaderContainer"]
+[node name="HeaderContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Run complete!"
+size_flags_vertical = 0
+theme_override_constants/separation = 50
+alignment = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HeaderContainer"]
+layout_mode = 2
+
+[node name="BackIconButton" parent="MarginContainer/VBoxContainer/HeaderContainer/HBoxContainer" instance=ExtResource("3_kffv2")]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="MovesetManagerIconButton" parent="MarginContainer/VBoxContainer/HeaderContainer/HBoxContainer" instance=ExtResource("3_kffv2")]
+layout_mode = 2
+size_flags_horizontal = 10
+
+[node name="CompleteLabel" parent="MarginContainer/VBoxContainer/HeaderContainer" instance=ExtResource("4_7lyie")]
+layout_mode = 2
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/normal_font_size = 28
+fit_content = true
 horizontal_alignment = 1
 
-[node name="StartButtonsContainer" type="Control" parent="MarginContainer"]
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 50
+theme_override_styles/separator = SubResource("StyleBoxEmpty_4hjbm")
 
-[node name="StartBattleButton" parent="MarginContainer/StartButtonsContainer" instance=ExtResource("2_a0dt8")]
-layout_mode = 0
-anchors_preset = 0
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 14.0
-offset_top = 230.0
-offset_right = 114.0
-offset_bottom = 330.0
-grow_horizontal = 1
-grow_vertical = 1
-
-[node name="StartBattleButton2" parent="MarginContainer/StartButtonsContainer" instance=ExtResource("2_a0dt8")]
-layout_mode = 1
-offset_left = -242.0
-offset_top = -2.0
-offset_right = -242.0
-offset_bottom = -2.0
-
-[node name="StartBattleButton3" parent="MarginContainer/StartButtonsContainer" instance=ExtResource("2_a0dt8")]
-layout_mode = 0
-anchors_preset = 0
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 430.0
-offset_top = 222.0
-offset_right = 530.0
-offset_bottom = 322.0
-grow_horizontal = 1
-grow_vertical = 1
-
-[node name="StartBattleButton4" parent="MarginContainer/StartButtonsContainer" instance=ExtResource("2_a0dt8")]
-layout_mode = 1
-offset_left = 124.0
-offset_top = -60.0
-offset_right = 224.0
-offset_bottom = 40.0
-
-[node name="StartBattleButton5" parent="MarginContainer/StartButtonsContainer" instance=ExtResource("2_a0dt8")]
-layout_mode = 1
-offset_left = 328.0
-offset_top = -52.0
-offset_right = 428.0
-offset_bottom = 48.0
-
-[node name="ConfirmBackDialog" type="ConfirmationDialog" parent="MarginContainer"]
-oversampling_override = 1.0
-title = ""
-initial_position = 3
-size = Vector2i(528, 100)
-current_screen = 0
-ok_button_text = "Confirm"
-dialog_text = "Are you sure? If you go back to Menu now, all progres will be lost..."
-dialog_autowrap = true
-
-[node name="ButtonsContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="StartButtonsContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 8
+size_flags_vertical = 3
 theme_override_constants/separation = 20
 
-[node name="MoveManagementButton" type="Button" parent="MarginContainer/ButtonsContainer"]
+[node name="StartBattleButton" parent="MarginContainer/VBoxContainer/StartButtonsContainer" instance=ExtResource("2_a0dt8")]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_font_sizes/font_size = 28
-text = "Moveset Management"
 
-[node name="BackButton" type="Button" parent="MarginContainer/ButtonsContainer"]
+[node name="StartBattleButton2" parent="MarginContainer/VBoxContainer/StartButtonsContainer" instance=ExtResource("2_a0dt8")]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 8
-theme_override_font_sizes/font_size = 28
-text = "Return to Menu"
 
-[connection signal="confirmed" from="MarginContainer/ConfirmBackDialog" to="." method="_on_confirmation_dialog_confirmed"]
-[connection signal="pressed" from="MarginContainer/ButtonsContainer/MoveManagementButton" to="." method="_on_move_management_button_pressed"]
-[connection signal="pressed" from="MarginContainer/ButtonsContainer/BackButton" to="." method="_on_back_button_pressed"]
+[node name="StartBattleButton3" parent="MarginContainer/VBoxContainer/StartButtonsContainer" instance=ExtResource("2_a0dt8")]
+layout_mode = 2
+
+[node name="StartBattleButton4" parent="MarginContainer/VBoxContainer/StartButtonsContainer" instance=ExtResource("2_a0dt8")]
+layout_mode = 2
+
+[node name="StartBattleButton5" parent="MarginContainer/VBoxContainer/StartButtonsContainer" instance=ExtResource("2_a0dt8")]
+layout_mode = 2
+
+[node name="ConfirmPopUp" parent="." instance=ExtResource("5_kffv2")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -100.0
+offset_right = 200.0
+offset_bottom = 100.0
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HeaderContainer/HBoxContainer/BackIconButton" to="." method="_on_back_icon_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HeaderContainer/HBoxContainer/MovesetManagerIconButton" to="." method="_on_icon_button_pressed"]
