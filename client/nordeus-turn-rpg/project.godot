@@ -23,6 +23,10 @@ DictParser="*res://autoloads/dict_parser.gd"
 TooltipLayer="*res://autoloads/tooltip_layer.gd"
 MusicManager="*res://autoloads/music_manager/music_manager.tscn"
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [gui]
 
 theme/custom_font="uid://b5bmb1hxy8yhi"
