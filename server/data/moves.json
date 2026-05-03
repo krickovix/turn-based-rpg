@@ -46,7 +46,7 @@
     "description": "A cheap shot. Light damage, lowers target's Defense for 2 turns.",
     "effects": [
       { "type": "damage", "stat": "attack",  "target": "enemy", "base_value": 10, "turns_remaining": 0 },
-      { "type": "debuff", "stat": "defense", "target": "enemy", "base_value": 3,  "turns_remaining": 2 }
+      { "type": "debuff", "stat": "defense", "target": "enemy", "base_value": 10,  "turns_remaining": 2 }
     ]
   },
   "frenzy": {
@@ -54,7 +54,7 @@
     "name": "Frenzy",
     "description": "Whip into a fury. Raises your Attack for 2 turns.",
     "effects": [
-      { "type": "buff", "stat": "attack", "target": "self", "base_value": 7, "turns_remaining": 2 }
+      { "type": "buff", "stat": "attack", "target": "self", "base_value": 15, "turns_remaining": 2 }
     ]
   },
   "headbutt": {
@@ -71,7 +71,7 @@
     "name": "Bite",
     "description": "Sink fangs into the target. Moderate damage.",
     "effects": [
-      { "type": "damage", "stat": "attack", "target": "enemy", "base_value": 30, "turns_remaining": 0 }
+      { "type": "damage", "stat": "attack", "target": "enemy", "base_value": 15, "turns_remaining": 0 }
     ]
   },
   "web_throw": {
@@ -88,7 +88,7 @@
     "name": "Pounce",
     "description": "Leap and strike with full weight. Heavy damage.",
     "effects": [
-      { "type": "damage", "stat": "attack", "target": "enemy", "base_value": 30, "turns_remaining": 0 }
+      { "type": "damage", "stat": "attack", "target": "enemy", "base_value": 20, "turns_remaining": 0 }
     ]
   },
   "skitter": {
@@ -105,7 +105,7 @@
     "name": "Firebolt",
     "description": "Hurl a bolt of flame. Moderate damage. Scales with Magic, ignores Defense.",
     "effects": [
-      { "type": "damage", "stat": "magic", "target": "enemy", "base_value": 18, "turns_remaining": 0 }
+      { "type": "damage", "stat": "magic", "target": "enemy", "base_value": 12, "turns_remaining": 0 }
     ]
   },
   "arcane_surge": {
@@ -113,7 +113,7 @@
     "name": "Arcane Surge",
     "description": "Channel raw arcane power. Raises your Magic for 2 turns.",
     "effects": [
-      { "type": "buff", "stat": "magic", "target": "self", "base_value": 18, "turns_remaining": 2 }
+      { "type": "buff", "stat": "magic", "target": "self", "base_value": 10, "turns_remaining": 2 }
     ]
   },
   "mana_drain": {
