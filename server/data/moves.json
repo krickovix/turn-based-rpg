@@ -71,7 +71,7 @@
     "name": "Bite",
     "description": "Sink fangs into the target. Moderate damage.",
     "effects": [
-      { "type": "damage", "stat": "attack", "target": "enemy", "base_value": 15, "turns_remaining": 0 }
+      { "type": "damage", "stat": "attack", "target": "enemy", "base_value": 12, "turns_remaining": 0 }
     ]
   },
   "web_throw": {
@@ -79,7 +79,7 @@
     "name": "Web Throw",
     "description": "Sticky strands tangle the target. Light damage, lowers Defense for 2 turns.",
     "effects": [
-      { "type": "damage", "stat": "attack",  "target": "enemy", "base_value": 15, "turns_remaining": 0 },
+      { "type": "damage", "stat": "attack",  "target": "enemy", "base_value": 10, "turns_remaining": 0 },
       { "type": "debuff", "stat": "defense", "target": "enemy", "base_value": 10,  "turns_remaining": 2 }
     ]
   },
@@ -88,7 +88,7 @@
     "name": "Pounce",
     "description": "Leap and strike with full weight. Heavy damage.",
     "effects": [
-      { "type": "damage", "stat": "attack", "target": "enemy", "base_value": 20, "turns_remaining": 0 }
+      { "type": "damage", "stat": "attack", "target": "enemy", "base_value": 15, "turns_remaining": 0 }
     ]
   },
   "skitter": {
@@ -139,7 +139,7 @@
     "name": "Shadow Bolt",
     "description": "Hurl a bolt of pure shadow. Heavy damage. Scales with Magic, ignores Defense.",
     "effects": [
-      { "type": "damage", "stat": "magic", "target": "enemy", "base_value": 30, "turns_remaining": 0 }
+      { "type": "damage", "stat": "magic", "target": "enemy", "base_value": 20, "turns_remaining": 0 }
     ]
   },
   "drain_life": {
