@@ -37,7 +37,7 @@
     "name": "Rusty Blade",
     "description": "A crude swing with a dull blade. Moderate damage.",
     "effects": [
-      { "type": "damage", "stat": "attack", "target": "enemy", "base_value": 14, "turns_remaining": 0 }
+      { "type": "damage", "stat": "attack", "target": "enemy", "base_value": 14 , "turns_remaining": 0 }
     ]
   },
   "dirty_kick": {
@@ -105,7 +105,7 @@
     "name": "Firebolt",
     "description": "Hurl a bolt of flame. Moderate damage. Scales with Magic, ignores Defense.",
     "effects": [
-      { "type": "damage", "stat": "magic", "target": "enemy", "base_value": 24, "turns_remaining": 0 }
+      { "type": "damage", "stat": "magic", "target": "enemy", "base_value": 18, "turns_remaining": 0 }
     ]
   },
   "arcane_surge": {
