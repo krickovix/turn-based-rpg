@@ -1,10 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://ua3u5bro5tsy"]
+[gd_scene load_steps=8 format=3 uid="uid://ua3u5bro5tsy"]
 
 [ext_resource type="Script" uid="uid://brvfe0vh0woa6" path="res://battle/post_battle_screen/post_battle_screen.gd" id="1_ik1bs"]
-[ext_resource type="PackedScene" uid="uid://yuvr8u8fwvs5" path="res://moveset_manager/move_card/move_card.tscn" id="2_ioh7a"]
+[ext_resource type="Texture2D" uid="uid://cwphg5fsalb0s" path="res://assets/borders/borders2-2.png" id="2_cajwq"]
+[ext_resource type="PackedScene" uid="uid://yuvr8u8fwvs5" path="res://components/move_card/move_card.tscn" id="2_ioh7a"]
+[ext_resource type="Texture2D" uid="uid://tt8h7yntbshq" path="res://assets/borders/ornament1-3.png" id="3_8b73x"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ik1bs"]
 bg_color = Color(0, 0, 0, 0.7882353)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tc80j"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ioh7a"]
 
@@ -39,29 +43,13 @@ theme_override_font_sizes/font_size = 32
 text = "Victory!"
 horizontal_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="LabelContainer"]
+[node name="BorderSeparator" type="TextureRect" parent="LabelContainer"]
 layout_mode = 2
-theme_override_constants/separation = 50
-
-[node name="XPLabel" type="Label" parent="LabelContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 28
-text = "+50 XP"
-horizontal_alignment = 1
-
-[node name="XPProgressBar" type="ProgressBar" parent="LabelContainer"]
-custom_minimum_size = Vector2(300, 20)
-layout_mode = 2
-size_flags_horizontal = 4
-value = 40.0
-show_percentage = false
+texture = ExtResource("2_cajwq")
+expand_mode = 5
 
 [node name="LevelUpContainer" type="VBoxContainer" parent="LabelContainer"]
 layout_mode = 2
-
-[node name="HSeparator2" type="HSeparator" parent="LabelContainer/LevelUpContainer"]
-layout_mode = 2
-theme_override_constants/separation = 50
 
 [node name="LevelUpLabel" type="Label" parent="LabelContainer/LevelUpContainer"]
 layout_mode = 2
@@ -77,7 +65,8 @@ horizontal_alignment = 1
 
 [node name="HSeparator3" type="HSeparator" parent="LabelContainer"]
 layout_mode = 2
-theme_override_constants/separation = 50
+theme_override_constants/separation = 20
+theme_override_styles/separator = SubResource("StyleBoxEmpty_tc80j")
 
 [node name="LearnedMoveLabel" type="Label" parent="LabelContainer"]
 layout_mode = 2
@@ -89,6 +78,15 @@ horizontal_alignment = 1
 layout_mode = 2
 theme_override_constants/separation = 10
 theme_override_styles/separator = SubResource("StyleBoxEmpty_ioh7a")
+
+[node name="BorderSeparator2" type="TextureRect" parent="LabelContainer"]
+visible = false
+modulate = Color(0.6745098, 0.5803922, 0.5764706, 1)
+custom_minimum_size = Vector2(50, 30)
+layout_mode = 2
+texture = ExtResource("3_8b73x")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="LearnedMoveCard" parent="LabelContainer" instance=ExtResource("2_ioh7a")]
 layout_mode = 2
