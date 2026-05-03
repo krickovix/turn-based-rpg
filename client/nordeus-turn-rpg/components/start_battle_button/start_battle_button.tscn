@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://ci33kpcqdparm"]
 
 [ext_resource type="Script" uid="uid://dg7kh2ng0jgry" path="res://components/start_battle_button/start_battle_button.gd" id="1_3gwww"]
-[ext_resource type="PackedScene" uid="uid://b1qay54tjrx3t" path="res://fighter/fighter_ui/fighter_icon/fighter_icon.tscn" id="2_wjubu"]
+[ext_resource type="PackedScene" uid="uid://d351pm1mog6y0" path="res://components/icon_button/icon_button.tscn" id="2_alked"]
 [ext_resource type="Texture2D" uid="uid://5uacnqht683s" path="res://assets/icons/locked.png" id="3_wjubu"]
 
 [node name="StartBattleButton" type="CenterContainer"]
@@ -23,22 +23,8 @@ layout_mode = 2
 layout_mode = 2
 theme_override_constants/separation = 12
 
-[node name="Button" type="Button" parent="CenterContainer/VBoxContainer"]
-custom_minimum_size = Vector2(100, 100)
+[node name="IconButton" parent="CenterContainer/VBoxContainer" instance=ExtResource("2_alked")]
 layout_mode = 2
-flat = true
-icon_alignment = 1
-expand_icon = true
-
-[node name="FighterIcon" parent="CenterContainer/VBoxContainer/Button" instance=ExtResource("2_wjubu")]
-layout_mode = 1
-
-[node name="NameLabel" type="Label" parent="CenterContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/outline_size = 10
-theme_override_font_sizes/font_size = 24
-text = "Dragon"
-horizontal_alignment = 1
 
 [node name="LockIcon" type="TextureRect" parent="."]
 custom_minimum_size = Vector2(40, 40)
@@ -48,4 +34,4 @@ texture = ExtResource("3_wjubu")
 expand_mode = 5
 stretch_mode = 5
 
-[connection signal="pressed" from="CenterContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/IconButton" to="." method="_on_icon_button_pressed"]
