@@ -20,7 +20,9 @@ const MENU_TEXTURE = "res://assets/icons/book_2_icon.tres"
 @onready var back_icon_button: IconButton = $MarginContainer/VBoxContainer/HeaderContainer/HBoxContainer/BackIconButton
 
 
+
 func _ready() -> void:
+	MusicManager.play_map_music()
 	if RunState.max_encounter_index >= 5:
 		complete_label.type_text("Congratulations!\nMission completed.")
 	
@@ -41,6 +43,7 @@ func _ready() -> void:
 
 func _on_encounter_pressed(index: int) -> void:
 	RunState.current_encounter_index = index
+	#MusicManager.pause_music()
 	get_tree().change_scene_to_file(BATTLE_PATH)
 
 func _on_popup_clicked_confirm() -> void:

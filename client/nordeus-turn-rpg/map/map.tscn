@@ -70,7 +70,6 @@ size_flags_horizontal = 10
 
 [node name="CompleteLabel" parent="MarginContainer/VBoxContainer/HeaderContainer" instance=ExtResource("4_7lyie")]
 layout_mode = 2
-theme_override_constants/outline_size = 10
 theme_override_font_sizes/normal_font_size = 28
 fit_content = true
 horizontal_alignment = 1

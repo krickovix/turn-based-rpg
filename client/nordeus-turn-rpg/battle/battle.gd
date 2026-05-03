@@ -2,14 +2,16 @@ extends Control
 
 signal battle_over(xp_learned: int, levels_gained: int, move_learned: Move)
 
+const TURN_DELAY = 0.8
+const ACTION_DELAY = 0.4
+
 enum FighterType{HERO, MONSTER}
 
-@onready var move_card_container: HBoxContainer = $MarginContainer/MoveUI/MoveCardContainer
 @onready var move_cards : Array[MoveCard] = [
-	$MarginContainer/MoveUI/MoveCardContainer/MoveCard, 
-	$MarginContainer/MoveUI/MoveCardContainer/MoveCard2, 
-	$MarginContainer/MoveUI/MoveCardContainer/MoveCard3, 
-	$MarginContainer/MoveUI/MoveCardContainer/MoveCard4
+	$MarginContainer/MoveCardContainer/MoveCard, 
+	$MarginContainer/MoveCardContainer/MoveCard2, 
+	$MarginContainer/MoveCardContainer/MoveCard3, 
+	$MarginContainer/MoveCardContainer/MoveCard4
 ]
 @onready var battle_log: BattleLog = $MarginContainer/BattleLog
 
@@ -27,6 +29,7 @@ class BattleResult:
 var last_battle_result: BattleResult
 
 func _ready() -> void:
+	MusicManager.play_battle_music()
 	hero = RunState.hero
 	hero.reset_for_battle()
 	monster = RunState.monsters[RunState.current_encounter_index]
@@ -43,20 +46,20 @@ func _on_move_button_pressed(move: Move) -> void:
 		
 func handle_hero_move(move: Move) -> void:
 	resolve_move(hero, monster, move)
+	disable_moves()
+	await get_tree().create_timer(TURN_DELAY).timeout	
 	request_monster_move()
-	refresh_ui()
-			
+	
 func handle_monster_move(move: Move) -> void:
 	resolve_move(monster, hero, move)
+	enable_moves()
 	turn += 1
-	refresh_ui()
 	
 func request_monster_move() -> void:
 	var move = await APIClient.get_monster_move(monster.str_id, monster.hp, monster.max_hp, monster.active_effects,
 												hero.hp, hero.max_hp, hero.active_effects, turn)
 	if move == null:
 		current_player = FighterType.HERO
-		refresh_ui()
 		return
 	
 	handle_monster_move(move)
@@ -64,7 +67,6 @@ func request_monster_move() -> void:
 func resolve_move(caster: Fighter, enemy: Fighter, move: Move):
 	caster.tick_active_effects()
 	
-	var side := BattleLog.Side.HERO if caster == hero else BattleLog.Side.MONSTER
 	var text = "%s used %s" % [caster.name, move.name]
 	if move.icon:
 		text += "[img=24]%s[/img] " % [move.icon.resource_path]
@@ -75,6 +77,7 @@ func resolve_move(caster: Fighter, enemy: Fighter, move: Move):
 		clone.caster = caster
 		var target := caster if clone.target == Effect.TARGET.SELF else enemy
 		target.apply(clone)
+		await get_tree().create_timer(ACTION_DELAY).timeout
 		if target.is_dead(): break
 	
 	current_player = (current_player+1)%2 as FighterType
@@ -115,7 +118,10 @@ func set_up_ui() -> void:
 		move_cards[i].set_move(move)
 		move_cards[i].icon_button.pressed.connect(_on_move_button_pressed.bind(move_cards[i].move))
 		
-	refresh_ui()
-
-func refresh_ui() -> void:
-	move_card_container.visible = (current_player == FighterType.HERO and not battle_finished)
+func disable_moves() -> void:
+	for move_card in move_cards:
+		move_card.icon_button.disabled = true
+		
+func enable_moves() -> void:
+	for move_card in move_cards:
+		move_card.icon_button.disabled = false
