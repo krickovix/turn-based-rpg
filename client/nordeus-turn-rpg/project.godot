@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 RunState="*res://autoloads/run_state.gd"
 APIClient="*res://autoloads/api_client.gd"
 DictParser="*res://autoloads/dict_parser.gd"
+TooltipLayer="*res://autoloads/tooltip_layer.gd"
 
 [gui]
 
